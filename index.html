@@ -233,6 +233,42 @@
     .proj .links a { color:var(--accent); font-size:14px; font-family:var(--mono); cursor:none; }
     .proj .links a:hover { text-decoration:underline; }
 
+    /* filter tabs */
+    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+    .filter-btn { font-family:var(--mono); font-size:13px; color:var(--text-dim); background:var(--bg-soft); border:1px solid var(--border); padding:9px 17px; border-radius:10px; cursor:none; transition:color .2s, background .2s, border-color .2s, transform .2s var(--ease); }
+    .filter-btn:hover { color:var(--text); border-color:var(--accent); transform:translateY(-2px); }
+    .filter-btn.active { color:#001a12; background:var(--accent); border-color:var(--accent); }
+    .card.hide { display:none; }
+    .card.filtering { animation:cardIn .45s var(--ease); }
+    @keyframes cardIn { from{ opacity:0; transform:translateY(16px) scale(.98);} to{ opacity:1; transform:none;} }
+
+    /* github widget */
+    .gh-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:28px; }
+    .gh-tile { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 18px; text-align:center; transition:transform .25s var(--ease), border-color .2s; }
+    .gh-tile:hover { transform:translateY(-4px); border-color:var(--accent); }
+    .gh-tile .n { font-family:var(--mono); font-size:32px; font-weight:800; color:var(--accent); line-height:1; }
+    .gh-tile .l { font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.2px; margin-top:8px; }
+    .gh-repos { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .gh-repo { display:flex; flex-direction:column; gap:9px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; cursor:none; transition:transform .25s var(--ease), border-color .2s, box-shadow .2s; }
+    .gh-repo:hover { transform:translateY(-5px); border-color:var(--accent); box-shadow:0 22px 44px -26px rgba(0,230,168,.4); }
+    .gh-repo .name { font-family:var(--mono); color:var(--accent); font-weight:600; word-break:break-word; }
+    .gh-repo .desc { font-size:13.5px; color:var(--text-dim); flex:1; line-height:1.55; }
+    .gh-repo .foot { display:flex; gap:16px; font-size:12.5px; color:var(--text-dim); font-family:var(--mono); flex-wrap:wrap; }
+    .gh-lang { display:inline-flex; align-items:center; gap:6px; }
+    .gh-dot { width:10px; height:10px; border-radius:50%; background:var(--accent-2); }
+    .gh-msg { grid-column:1/-1; color:var(--text-dim); font-family:var(--mono); font-size:14px; padding:8px 0; }
+
+    /* contact form */
+    .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:start; text-align:left; position:relative; z-index:1; }
+    .form-field { margin-bottom:16px; }
+    .form-field label { display:block; font-size:13px; color:var(--text-dim); margin-bottom:6px; font-family:var(--mono); }
+    .form-field input, .form-field textarea { width:100%; background:var(--bg-soft); border:1px solid var(--border); border-radius:11px; padding:13px 15px; color:var(--text); font-family:var(--font); font-size:14.5px; cursor:text; transition:border-color .2s, box-shadow .2s; }
+    .form-field input:focus, .form-field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+    .form-field textarea { resize:vertical; min-height:130px; }
+    .contact-side h2 { margin-bottom:12px; }
+    .contact-side p { margin:0 0 22px; color:var(--text-dim); }
+    @media(max-width:780px){ .contact-grid{ grid-template-columns:1fr; gap:32px; } }
+
     /* timeline */
     .timeline { position:relative; padding-left:28px; }
     .timeline::before { content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--accent), var(--accent-2), var(--accent-3)); }
@@ -265,7 +301,7 @@
 
     @media (max-width: 900px) {
       body { cursor:auto; } .cursor-dot,.cursor-ring{ display:none; }
-      .btn,.chip,.social,.theme-btn,.proj .links a{ cursor:pointer; }
+      .btn,.chip,.social,.theme-btn,.proj .links a,.filter-btn,.gh-repo{ cursor:pointer; }
       .hero-grid, .about-grid { grid-template-columns:1fr; }
       .portrait-stage { order:-1; margin-bottom:8px; }
       .nav-links { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--border); padding:8px 0; }
@@ -294,6 +330,7 @@
           <a href="#services" data-cursor>Services</a>
           <a href="#skills" data-cursor>Skills</a>
           <a href="#work" data-cursor>Work</a>
+          <a href="#github" data-cursor>GitHub</a>
           <a href="#journey" data-cursor>Journey</a>
           <a href="#contact" data-cursor>Contact</a>
         </div>
@@ -320,6 +357,7 @@
         </p>
         <div class="cta reveal">
           <a href="#contact" class="btn btn-primary" data-magnetic data-cursor>Get in touch →</a>
+          <a href="resume.pdf" class="btn btn-ghost" download data-magnetic data-cursor>⬇ Résumé</a>
           <a href="#work" class="btn btn-ghost" data-magnetic data-cursor>View my work</a>
         </div>
         <div class="stat-strip reveal">
@@ -455,11 +493,36 @@
       <h2>Projects &amp; writeups</h2>
       <p>Selected hands-on work. Replace these with your real CTF writeups, labs, and tools as you build them.</p>
     </div>
-    <div class="grid-cards stagger">
-      <div class="card proj tilt-card"><span class="spot"></span><div class="meta"><span class="badge">CTF</span><span class="badge">Web</span></div><h3>Web Exploitation Writeup</h3><p>A walkthrough of chaining an IDOR into account takeover on a deliberately vulnerable app — recon, exploitation, and the fix.</p><div class="links"><a href="#" data-cursor>Read →</a></div></div>
-      <div class="card proj tilt-card"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Python</span></div><h3>Port Scanner (from scratch)</h3><p>A lightweight multithreaded port scanner built to understand how network reconnaissance really works under the hood.</p><div class="links"><a href="#" data-cursor>GitHub →</a></div></div>
-      <div class="card proj tilt-card"><span class="spot"></span><div class="meta"><span class="badge">Blue Team</span><span class="badge">SIEM</span></div><h3>Home SOC Lab</h3><p>Building a detection lab with log collection and alerting to practice spotting real-world attack patterns.</p><div class="links"><a href="#" data-cursor>Details →</a></div></div>
+    <div class="filters reveal" id="projFilters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="offensive">Offensive</button>
+      <button class="filter-btn" data-filter="blue">Blue Team</button>
+      <button class="filter-btn" data-filter="tools">Tools</button>
     </div>
+    <div class="grid-cards stagger" id="projGrid">
+      <div class="card proj tilt-card" data-cat="offensive"><span class="spot"></span><div class="meta"><span class="badge">CTF</span><span class="badge">Web</span></div><h3>Web Exploitation Writeup</h3><p>Chaining an IDOR into full account takeover on a deliberately vulnerable app — recon, exploitation, and the fix.</p><div class="links"><a href="#" data-cursor>Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="offensive"><span class="spot"></span><div class="meta"><span class="badge">Active Directory</span><span class="badge">Lab</span></div><h3>AD Attack Path</h3><p>Walking an on-prem Active Directory from initial foothold to Domain Admin — Kerberoasting, lateral movement, and hardening notes.</p><div class="links"><a href="#" data-cursor>Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="tools"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Python</span></div><h3>Port Scanner (from scratch)</h3><p>A lightweight multithreaded port scanner built to understand how network reconnaissance really works under the hood.</p><div class="links"><a href="#" data-cursor>GitHub →</a></div></div>
+      <div class="card proj tilt-card" data-cat="tools"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Bash</span></div><h3>Recon Automation Script</h3><p>A one-command recon wrapper that chains subdomain enumeration, port scanning, and screenshotting for faster engagement kickoffs.</p><div class="links"><a href="#" data-cursor>GitHub →</a></div></div>
+      <div class="card proj tilt-card" data-cat="blue"><span class="spot"></span><div class="meta"><span class="badge">Blue Team</span><span class="badge">SIEM</span></div><h3>Home SOC Lab</h3><p>A detection lab with log collection and alerting to practice spotting real-world attack patterns end to end.</p><div class="links"><a href="#" data-cursor>Details →</a></div></div>
+      <div class="card proj tilt-card" data-cat="blue"><span class="spot"></span><div class="meta"><span class="badge">Detection</span><span class="badge">Sigma</span></div><h3>Detection Rules Pack</h3><p>A set of Sigma rules for common attacker behaviour (suspicious PowerShell, brute force, persistence) mapped to MITRE ATT&amp;CK.</p><div class="links"><a href="#" data-cursor>Details →</a></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== GITHUB (live) ===================== -->
+  <section id="github" class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// live from github</div>
+      <h2>GitHub activity</h2>
+      <p>Pulled live from my profile — this updates automatically every time I push new work.</p>
+    </div>
+    <div class="gh-stats reveal" id="ghStats">
+      <div class="gh-tile"><div class="n" id="ghRepos">–</div><div class="l">Public Repos</div></div>
+      <div class="gh-tile"><div class="n" id="ghStars">–</div><div class="l">Total Stars</div></div>
+      <div class="gh-tile"><div class="n" id="ghFollowers">–</div><div class="l">Followers</div></div>
+      <div class="gh-tile"><div class="n" id="ghFollowing">–</div><div class="l">Following</div></div>
+    </div>
+    <div class="gh-repos reveal" id="ghRepoList"><div class="gh-msg">Loading repositories…</div></div>
   </section>
 
   <!-- ===================== JOURNEY ===================== -->
@@ -479,13 +542,25 @@
   <!-- ===================== CONTACT ===================== -->
   <section id="contact" class="wrap">
     <div class="contact-box reveal">
-      <h2>Let's <span class="grad">connect</span></h2>
-      <p>Open to internships, mentorship, collaboration on security projects, and CTF teams. Reach out anytime.</p>
-      <div class="socials">
-        <a class="social" href="mailto:your@email.com" data-magnetic data-cursor>✉ Email</a>
-        <a class="social" href="https://github.com/vicuvi1" target="_blank" rel="noopener" data-magnetic data-cursor>⌥ GitHub</a>
-        <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>in LinkedIn</a>
-        <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>⚑ TryHackMe</a>
+      <div class="contact-grid">
+        <!-- FORMSPREE: create a free form at formspree.io, then paste your form ID
+             into the action URL below (replace "your-form-id"). -->
+        <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+          <div class="form-field"><label for="cName">Name</label><input id="cName" name="name" type="text" placeholder="Jane Recruiter" required></div>
+          <div class="form-field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" placeholder="jane@company.com" required></div>
+          <div class="form-field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" placeholder="Hi Victor, we'd love to talk about…" required></textarea></div>
+          <button type="submit" class="btn btn-primary" data-magnetic data-cursor style="width:100%; justify-content:center;">Send message →</button>
+        </form>
+        <div class="contact-side">
+          <h2>Let's <span class="grad">connect</span></h2>
+          <p>Open to internships, mentorship, collaboration on security projects, and CTF teams. Drop a message or reach me directly:</p>
+          <div class="socials" style="justify-content:flex-start">
+            <a class="social" href="mailto:your@email.com" data-magnetic data-cursor>✉ Email</a>
+            <a class="social" href="https://github.com/vicuvi1" target="_blank" rel="noopener" data-magnetic data-cursor>⌥ GitHub</a>
+            <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>in LinkedIn</a>
+            <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>⚑ TryHackMe</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -804,6 +879,78 @@
     console.log('%cInspecting the source? Good — that\'s the security mindset. 🔍', 'color:#8b98a9;font-size:13px;');
     console.log('%cflag{you_read_the_console}', 'color:#00e6a8;font-family:monospace;font-size:14px;');
     console.log('%cLike what you see? Let\'s talk → your@email.com', 'color:#3b82f6;font-size:13px;');
+
+    /* ================= PROJECT FILTER TABS ================= */
+    const projFilters = document.getElementById('projFilters');
+    if (projFilters) {
+      const cards = [...document.querySelectorAll('#projGrid .card')];
+      projFilters.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn'); if (!btn) return;
+        projFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(c => {
+          const show = f === 'all' || (c.dataset.cat || '').split(' ').includes(f);
+          c.classList.toggle('hide', !show);
+          if (show) { c.classList.remove('filtering'); void c.offsetWidth; c.classList.add('filtering'); }
+        });
+      });
+    }
+
+    /* ================= LIVE GITHUB WIDGET ================= */
+    (function ghLoad() {
+      const user = 'vicuvi1';
+      const list = document.getElementById('ghRepoList');
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      const langColor = { JavaScript:'#f1e05a', TypeScript:'#3178c6', Python:'#3572A5', HTML:'#e34c26', CSS:'#563d7c',
+        'C++':'#f34b7d', C:'#555555', 'C#':'#178600', Shell:'#89e051', Go:'#00ADD8', Java:'#b07219', PHP:'#4F5D95',
+        Ruby:'#701516', Rust:'#dea584', Dockerfile:'#384d54', PowerShell:'#012456' };
+
+      fetch(`https://api.github.com/users/${user}`)
+        .then(r => { if (!r.ok) throw 0; return r.json(); })
+        .then(u => { set('ghRepos', u.public_repos); set('ghFollowers', u.followers); set('ghFollowing', u.following); })
+        .catch(() => {});
+
+      fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=100`)
+        .then(r => { if (!r.ok) throw 0; return r.json(); })
+        .then(repos => {
+          if (!Array.isArray(repos)) throw 0;
+          set('ghStars', repos.reduce((s, r) => s + r.stargazers_count, 0));
+          const top = repos.filter(r => !r.fork)
+            .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)))
+            .slice(0, 6);
+          if (!top.length) { list.innerHTML = "<div class='gh-msg'>No public repositories yet — new work is on the way. 🚧</div>"; return; }
+          list.innerHTML = top.map(r => `
+            <a class="gh-repo" href="${r.html_url}" target="_blank" rel="noopener">
+              <div class="name">▹ ${esc(r.name)}</div>
+              <div class="desc">${r.description ? esc(r.description) : '<span style="opacity:.55">No description</span>'}</div>
+              <div class="foot">
+                ${r.language ? `<span class="gh-lang"><span class="gh-dot" style="background:${langColor[r.language] || '#8b98a9'}"></span>${esc(r.language)}</span>` : ''}
+                <span>★ ${r.stargazers_count}</span><span>⑂ ${r.forks_count}</span>
+              </div>
+            </a>`).join('');
+        })
+        .catch(() => {
+          list.innerHTML = `<div class='gh-msg'>Couldn't load repos right now (GitHub rate limit or offline). Visit <a href='https://github.com/${user}' target='_blank' style='color:var(--accent)'>github.com/${user}</a>.</div>`;
+        });
+    })();
+
+    /* ================= CONTACT FORM (Formspree AJAX) ================= */
+    const cf = document.getElementById('contactForm');
+    if (cf) {
+      cf.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (cf.action.includes('your-form-id')) { toast('⚙ Add your Formspree form ID first (see README)'); return; }
+        const btn = cf.querySelector('button[type=submit]'); const label = btn.textContent;
+        btn.textContent = 'Sending…'; btn.disabled = true;
+        try {
+          const res = await fetch(cf.action, { method: 'POST', body: new FormData(cf), headers: { Accept: 'application/json' } });
+          if (res.ok) { cf.reset(); toast('✅ Message sent — thanks, I\'ll reply soon!'); }
+          else toast('❌ Something went wrong — try emailing me directly.');
+        } catch { toast('❌ Network error — try emailing me directly.'); }
+        btn.textContent = label; btn.disabled = false;
+      });
+    }
 
     /* ---- particle network (optimized) ---- */
     (function () {
