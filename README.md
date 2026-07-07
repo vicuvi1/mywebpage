@@ -16,7 +16,19 @@ It automatically replaces the hooded-hacker placeholder in the hero — no code 
 - Until you add it, the stylized hacker avatar shows automatically.
 
 ## Add your résumé
-Drop a PDF named **`resume.pdf`** into this folder. The hero's **⬇ Résumé** button downloads it automatically.
+Drop a PDF named **`resume.pdf`** into this folder. The hero's **⬇ Résumé** button opens it in an inline viewer (with a Download button). Until the file exists, the viewer shows blank.
+
+## Social preview image (for LinkedIn / Twitter)
+`og-image.svg` is included and referenced in the meta tags. Some platforms (LinkedIn) prefer a **PNG** — if you want a guaranteed preview, open `og-image.svg` in a browser, screenshot it at 1200×630, save as `og-image.png`, and change the two `og-image.svg` references in `index.html`'s `<head>` to `og-image.png`.
+
+## Installable / offline (PWA)
+`manifest.json` + `sw.js` make the site installable and work offline — but service workers only run over **https** (e.g. GitHub Pages), not when opened as a local file. It "just works" once deployed.
+
+## Security toolbox
+The **Toolbox** section has three live, client-side tools (encoder/decoder, SHA-256 hasher, password strength tester). All run in the browser — no data leaves the page.
+
+## Fun terminal commands (in the About terminal)
+`hack`, `crt`, `sound`, and `sudo hire-victor` (🎉 confetti) — plus the achievement toasts they unlock.
 
 ## Make the contact form send (Formspree — free, no backend)
 1. Sign up at [formspree.io](https://formspree.io) and create a new form.
