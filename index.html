@@ -215,6 +215,46 @@
       box-shadow:0 16px 40px -14px rgba(0,0,0,.6); transition:opacity .3s var(--ease), transform .3s var(--ease); }
     .toast.show { opacity:1; transform:translate(-50%,0); }
 
+    /* preloader / boot */
+    #preloader { position:fixed; inset:0; z-index:10000; background:#04070c; display:grid; place-items:center; transition:opacity .5s var(--ease), visibility .5s; }
+    #preloader.done { opacity:0; visibility:hidden; }
+    #preloader .boot { font-family:var(--mono); font-size:14px; color:var(--accent); width:min(90%,520px); }
+    #preloader pre { white-space:pre-wrap; margin:0; line-height:1.95; }
+    #preloader .boot::after { content:"_"; animation:blink 1s steps(2) infinite; }
+
+    /* back to top */
+    .to-top { position:fixed; bottom:24px; right:24px; z-index:80; width:46px; height:46px; border-radius:12px; border:1px solid var(--border);
+      background:var(--card); color:var(--accent); font-size:20px; cursor:none; display:grid; place-items:center; opacity:0; transform:translateY(16px); pointer-events:none;
+      transition:opacity .3s var(--ease), transform .3s var(--ease), border-color .2s, box-shadow .2s; }
+    .to-top.show { opacity:1; transform:none; pointer-events:auto; }
+    .to-top:hover { border-color:var(--accent); box-shadow:0 10px 26px -10px var(--accent); }
+
+    /* nav active + palette button */
+    .nav-links a.active { color:var(--text); } .nav-links a.active::after { width:100%; }
+    .kbd-btn { font-family:var(--mono); font-size:12px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); border-radius:9px; padding:0 11px; height:40px; cursor:none; transition:border-color .2s, color .2s; }
+    .kbd-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* command palette */
+    .palette { position:fixed; inset:0; z-index:9997; background:rgba(0,0,0,.5); backdrop-filter:blur(4px); display:none; padding-top:12vh; justify-content:center; }
+    .palette.open { display:flex; }
+    .palette-box { width:min(92%,560px); align-self:flex-start; background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.8); animation:cardIn .2s var(--ease); }
+    #paletteIn { width:100%; padding:18px 20px; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); font-family:var(--mono); font-size:15px; outline:none; cursor:text; }
+    .palette-list { max-height:340px; overflow-y:auto; padding:8px; }
+    .p-item { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; cursor:none; font-size:14.5px; }
+    .p-item .p-hint { font-family:var(--mono); font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+    .p-item.sel, .p-item:hover { background:var(--bg-soft); }
+    .p-item.sel { box-shadow:inset 0 0 0 1px var(--accent); }
+    .p-empty { padding:18px; color:var(--text-dim); font-family:var(--mono); text-align:center; }
+
+    /* certifications */
+    .cert-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+    .cert-ico { font-size:26px; }
+    .cert-status { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:4px 11px; border-radius:999px; border:1px solid var(--border); white-space:nowrap; }
+    .cert-status.planned { color:var(--text-dim); }
+    .cert-status.progress { color:var(--accent); border-color:color-mix(in srgb, var(--accent) 50%, var(--border)); background:color-mix(in srgb, var(--accent) 10%, transparent); }
+    .cert-status.earned { color:#001a12; background:var(--accent); border-color:var(--accent); }
+    .cert h3 { margin-bottom:8px; } .cert p { color:var(--text-dim); font-size:14.5px; }
+
     /* skills */
     .skill-cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:22px; }
     .skill-group h4 { font-size:15px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
@@ -301,7 +341,7 @@
 
     @media (max-width: 900px) {
       body { cursor:auto; } .cursor-dot,.cursor-ring{ display:none; }
-      .btn,.chip,.social,.theme-btn,.proj .links a,.filter-btn,.gh-repo{ cursor:pointer; }
+      .btn,.chip,.social,.theme-btn,.proj .links a,.filter-btn,.gh-repo,.to-top,.kbd-btn,.p-item{ cursor:pointer; }
       .hero-grid, .about-grid { grid-template-columns:1fr; }
       .portrait-stage { order:-1; margin-bottom:8px; }
       .nav-links { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--border); padding:8px 0; }
@@ -311,6 +351,8 @@
   </style>
 </head>
 <body>
+  <div id="preloader"><div class="boot"><pre id="bootLog"></pre></div></div>
+
   <div class="backdrop"></div>
   <canvas id="net"></canvas>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
@@ -319,6 +361,13 @@
   <canvas id="matrix"></canvas>
   <div class="matrix-exit">press <b>ESC</b> or click to exit · matrix mode</div>
   <div class="toast" id="toast"></div>
+  <button id="toTop" class="to-top" aria-label="Back to top" data-cursor>↑</button>
+  <div id="palette" class="palette" aria-hidden="true">
+    <div class="palette-box">
+      <input id="paletteIn" type="text" autocomplete="off" spellcheck="false" placeholder="Jump to a section or run a command…   (Esc to close)" aria-label="Command palette" />
+      <div class="palette-list" id="paletteList"></div>
+    </div>
+  </div>
 
   <!-- ===================== NAV ===================== -->
   <header>
@@ -331,10 +380,12 @@
           <a href="#skills" data-cursor>Skills</a>
           <a href="#work" data-cursor>Work</a>
           <a href="#github" data-cursor>GitHub</a>
+          <a href="#certs" data-cursor>Certs</a>
           <a href="#journey" data-cursor>Journey</a>
           <a href="#contact" data-cursor>Contact</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
+          <button class="kbd-btn" id="paletteBtn" title="Command palette (Ctrl+K)" data-cursor>⌘K</button>
           <button class="theme-btn" id="theme" title="Toggle theme" data-cursor>◐</button>
           <button class="burger" id="burger">☰</button>
         </div>
@@ -539,6 +590,21 @@
     </div>
   </section>
 
+  <!-- ===================== CERTIFICATIONS ===================== -->
+  <section id="certs" class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// credentials</div>
+      <h2>Certifications</h2>
+      <p>Where I'm validating my skills. Statuses are honest — earned, in progress, or planned.</p>
+    </div>
+    <div class="grid-cards stagger">
+      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🛡️</span><span class="cert-status planned">Planned</span></div><h3>CompTIA Security+</h3><p>Industry-standard baseline across security concepts, threats, and architecture.</p></div>
+      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🎯</span><span class="cert-status planned">Planned</span></div><h3>eLearnSecurity eJPT</h3><p>Hands-on, entry-level penetration testing certification — fully practical.</p></div>
+      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">⚔️</span><span class="cert-status progress">In Progress</span></div><h3>TryHackMe / HTB Paths</h3><p>Working through offensive &amp; defensive learning paths and CTF rooms.</p></div>
+      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🌐</span><span class="cert-status progress">In Progress</span></div><h3>Networking Foundations</h3><p>TCP/IP, routing, and protocols — the groundwork every specialist needs.</p></div>
+    </div>
+  </section>
+
   <!-- ===================== CONTACT ===================== -->
   <section id="contact" class="wrap">
     <div class="contact-box reveal">
@@ -608,6 +674,11 @@
       e.target.classList.add('in');
       if (e.target.classList.contains('stagger'))
         [...e.target.children].forEach((c, i) => c.style.transitionDelay = (i * 80) + 'ms');
+      // decrypt section headings on reveal
+      if (!reduce && e.target.matches('.sec-head')) {
+        const h2 = e.target.querySelector('h2');
+        if (h2 && !h2.querySelector('*')) scrambleTo(h2, h2.textContent.trim(), 28);
+      }
       io.unobserve(e.target);
     }), { threshold: 0.12 });
     document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
@@ -628,23 +699,30 @@
     }), { threshold: 0.5 });
     document.querySelectorAll('.count').forEach(el => cio.observe(el));
 
-    /* ---- role scramble ---- */
-    const roleEl = document.getElementById('role');
-    const roleText = 'Cybersecurity Specialist';
+    /* ---- reusable scramble helper ---- */
     const glyphs = '!<>-_\\/[]{}—=+*^?#01ABCDEF';
-    if (reduce) { roleEl.textContent = roleText; }
-    else {
+    function scrambleTo(el, text, speed, done) {
       let frame = 0;
-      (function scramble() {
+      (function step() {
         let out = '';
-        for (let i = 0; i < roleText.length; i++) {
-          if (i < frame / 2) out += roleText[i];
-          else if (roleText[i] === ' ') out += ' ';
+        for (let i = 0; i < text.length; i++) {
+          if (i < frame / 2) out += text[i];
+          else if (text[i] === ' ') out += ' ';
           else out += glyphs[Math.floor(Math.random() * glyphs.length)];
         }
-        roleEl.textContent = out; frame++;
-        if (frame / 2 <= roleText.length) setTimeout(scramble, 45); else roleEl.textContent = roleText;
+        el.textContent = out; frame++;
+        if (frame / 2 <= text.length) setTimeout(step, speed);
+        else { el.textContent = text; if (done) done(); }
       })();
+    }
+
+    /* ---- rotating roles in hero ---- */
+    const roleEl = document.getElementById('role');
+    const roles = ['Cybersecurity Specialist', 'Penetration Tester', 'Threat Hunter', 'Security Researcher', 'Red + Blue Team'];
+    if (reduce) { roleEl.textContent = roles[0]; }
+    else {
+      let ri = 0;
+      (function cycle() { scrambleTo(roleEl, roles[ri], 45, () => { ri = (ri + 1) % roles.length; setTimeout(cycle, 1900); }); })();
     }
 
     /* ============ SMOOTH POINTER LAYER ============
@@ -934,6 +1012,92 @@
           list.innerHTML = `<div class='gh-msg'>Couldn't load repos right now (GitHub rate limit or offline). Visit <a href='https://github.com/${user}' target='_blank' style='color:var(--accent)'>github.com/${user}</a>.</div>`;
         });
     })();
+
+    /* ================= PRELOADER / BOOT ================= */
+    (function boot() {
+      const pre = document.getElementById('preloader');
+      if (!pre) return;
+      const finish = () => { pre.classList.add('done'); setTimeout(() => pre.remove(), 600); };
+      if (reduce || sessionStorage.getItem('booted')) { pre.remove(); return; }
+      sessionStorage.setItem('booted', '1');
+      const log = document.getElementById('bootLog');
+      const steps = [
+        '[  OK  ] Initializing secure shell',
+        '[  OK  ] Loading modules: recon · exploit · defend',
+        '[  OK  ] Mounting /dev/curiosity',
+        '[  OK  ] Establishing encrypted session',
+        '[ DONE ] Welcome, Victor Barbuta.',
+      ];
+      let i = 0;
+      (function next() {
+        if (i >= steps.length) { setTimeout(finish, 450); return; }
+        log.textContent += steps[i++] + '\n';
+        setTimeout(next, 260);
+      })();
+      setTimeout(finish, 3200); // safety: never trap the visitor
+    })();
+
+    /* ================= SCROLL-SPY NAV ================= */
+    const navA = [...document.querySelectorAll('.nav-links a')];
+    const spy = new IntersectionObserver((es) => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const id = e.target.getAttribute('id');
+      navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+    /* ================= BACK TO TOP ================= */
+    const toTop = document.getElementById('toTop');
+    addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > 600), { passive: true });
+    toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ================= COMMAND PALETTE ================= */
+    const palette = document.getElementById('palette');
+    const paletteIn = document.getElementById('paletteIn');
+    const paletteList = document.getElementById('paletteList');
+    const go = (sel) => { const el = document.querySelector(sel); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
+    const actions = [
+      { label: 'Go to About', hint: 'section', run: () => go('#about') },
+      { label: 'Go to Services', hint: 'section', run: () => go('#services') },
+      { label: 'Go to Skills', hint: 'section', run: () => go('#skills') },
+      { label: 'Go to Projects', hint: 'section', run: () => go('#work') },
+      { label: 'Go to GitHub activity', hint: 'section', run: () => go('#github') },
+      { label: 'Go to Certifications', hint: 'section', run: () => go('#certs') },
+      { label: 'Go to Journey', hint: 'section', run: () => go('#journey') },
+      { label: 'Go to Contact', hint: 'section', run: () => go('#contact') },
+      { label: 'Toggle light / dark theme', hint: 'action', run: () => themeBtn.click() },
+      { label: 'Download résumé', hint: 'action', run: () => { const a = document.createElement('a'); a.href = 'resume.pdf'; a.download = ''; a.click(); } },
+      { label: 'Copy email address', hint: 'action', run: () => { if (navigator.clipboard) navigator.clipboard.writeText('your@email.com').then(() => toast('📋 Email copied')); } },
+      { label: 'Enter the Matrix', hint: 'easter egg', run: () => matrixStart() },
+      { label: 'Open GitHub profile', hint: 'external', run: () => open('https://github.com/vicuvi1', '_blank') },
+    ];
+    let pSel = 0, pFiltered = actions.slice();
+    function renderPalette() {
+      paletteList.innerHTML = pFiltered.length
+        ? pFiltered.map((a, i) => `<div class="p-item ${i === pSel ? 'sel' : ''}" data-i="${i}"><span>${esc(a.label)}</span><span class="p-hint">${a.hint}</span></div>`).join('')
+        : '<div class="p-empty">No matches</div>';
+    }
+    function openPalette() { palette.classList.add('open'); paletteIn.value = ''; pFiltered = actions.slice(); pSel = 0; renderPalette(); setTimeout(() => paletteIn.focus(), 30); }
+    function closePalette() { palette.classList.remove('open'); }
+    function runSel() { const a = pFiltered[pSel]; if (a) { closePalette(); setTimeout(a.run, 120); } }
+    paletteIn.addEventListener('input', () => {
+      const q = paletteIn.value.toLowerCase();
+      pFiltered = actions.filter(a => a.label.toLowerCase().includes(q) || a.hint.includes(q));
+      pSel = 0; renderPalette();
+    });
+    paletteIn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); pSel = Math.min(pSel + 1, pFiltered.length - 1); renderPalette(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); pSel = Math.max(pSel - 1, 0); renderPalette(); }
+      else if (e.key === 'Enter') { e.preventDefault(); runSel(); }
+      else if (e.key === 'Escape') { closePalette(); }
+    });
+    paletteList.addEventListener('click', (e) => { const it = e.target.closest('.p-item'); if (it) { pSel = +it.dataset.i; runSel(); } });
+    palette.addEventListener('click', (e) => { if (e.target === palette) closePalette(); });
+    document.getElementById('paletteBtn').addEventListener('click', openPalette);
+    addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.classList.contains('open') ? closePalette() : openPalette(); }
+      else if (e.key === '/' && !/^(input|textarea)$/i.test(document.activeElement.tagName) && !palette.classList.contains('open')) { e.preventDefault(); openPalette(); }
+    });
 
     /* ================= CONTACT FORM (Formspree AJAX) ================= */
     const cf = document.getElementById('contactForm');
