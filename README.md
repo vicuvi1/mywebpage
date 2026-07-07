@@ -30,6 +30,12 @@ The **Toolbox** section has three live, client-side tools (encoder/decoder, SHA-
 ## Fun terminal commands (in the About terminal)
 `hack`, `crt`, `sound`, and `sudo hire-victor` (🎉 confetti) — plus the achievement toasts they unlock.
 
+## Writeups & blog (edit in one place)
+Both the **Projects** cards and the **Blog** section read from a single `library` object near the bottom of `index.html`'s `<script>`.
+- To edit a writeup: change the matching entry (`title`, `date`, `excerpt`, `meta`, `body`). `body` is plain HTML.
+- To add a project writeup: add a `library` entry, then add `data-open="your-id"` to the project card + its "Read →" link.
+- To add a blog post: add a `library` entry, then add its id to the `blogList` array — the card renders automatically.
+
 ## Make the contact form send (Formspree — free, no backend)
 1. Sign up at [formspree.io](https://formspree.io) and create a new form.
 2. Copy your form ID (looks like `xrgjabcd`).

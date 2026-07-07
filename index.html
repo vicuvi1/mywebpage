@@ -330,6 +330,22 @@
     .term-sound { margin-left:8px; background:none; border:none; color:var(--text-dim); cursor:none; font-size:13px; padding:0; }
     .term-sound:hover { color:var(--accent); }
 
+    /* detail / writeup modal */
+    .detail-box { height:auto; max-height:86vh; }
+    .detail-body { padding:28px 30px; overflow-y:auto; }
+    .detail-meta { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .detail-body h4 { margin:22px 0 8px; font-size:16px; color:var(--accent); }
+    .detail-body h4:first-child { margin-top:0; }
+    .detail-body p { color:var(--text-dim); margin-bottom:12px; }
+    .detail-body ul { color:var(--text-dim); margin:0 0 14px 20px; }
+    .detail-body li { margin-bottom:6px; }
+    .detail-body pre { background:#04070c; border:1px solid var(--border); border-radius:10px; padding:14px; overflow-x:auto; font-family:var(--mono); font-size:13px; color:#c7d2dd; margin-bottom:14px; }
+    .detail-body code { font-family:var(--mono); color:var(--accent); font-size:.92em; }
+
+    /* blog cards */
+    .blog-card .date { font-family:var(--mono); font-size:12px; color:var(--text-dim); margin-bottom:8px; }
+    .blog-card { cursor:none; }
+
     /* skills */
     .skill-cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:22px; }
     .skill-group h4 { font-size:15px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
@@ -449,6 +465,12 @@
       <iframe id="resumeFrame" title="Résumé" src="about:blank"></iframe>
     </div>
   </div>
+  <div id="detailModal" class="modal" aria-hidden="true">
+    <div class="modal-box detail-box">
+      <div class="modal-bar"><b id="detailTitle">…</b><button class="modal-close" id="detailClose" data-cursor>Close ✕</button></div>
+      <div class="detail-body" id="detailBody"></div>
+    </div>
+  </div>
 
   <!-- ===================== NAV ===================== -->
   <header>
@@ -457,13 +479,11 @@
         <a href="#top" class="brand" data-cursor>victor<span>@</span>barbuta:~$</a>
         <div class="nav-links" id="navlinks">
           <a href="#about" data-cursor>About</a>
-          <a href="#services" data-cursor>Services</a>
           <a href="#skills" data-cursor>Skills</a>
           <a href="#toolbox" data-cursor>Toolbox</a>
           <a href="#work" data-cursor>Work</a>
+          <a href="#blog" data-cursor>Blog</a>
           <a href="#github" data-cursor>GitHub</a>
-          <a href="#certs" data-cursor>Certs</a>
-          <a href="#journey" data-cursor>Journey</a>
           <a href="#contact" data-cursor>Contact</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
@@ -698,13 +718,23 @@
       <button class="filter-btn" data-filter="tools">Tools</button>
     </div>
     <div class="grid-cards stagger" id="projGrid">
-      <div class="card proj tilt-card" data-cat="offensive"><span class="spot"></span><div class="meta"><span class="badge">CTF</span><span class="badge">Web</span></div><h3>Web Exploitation Writeup</h3><p>Chaining an IDOR into full account takeover on a deliberately vulnerable app — recon, exploitation, and the fix.</p><div class="links"><a href="#" data-cursor>Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="offensive"><span class="spot"></span><div class="meta"><span class="badge">Active Directory</span><span class="badge">Lab</span></div><h3>AD Attack Path</h3><p>Walking an on-prem Active Directory from initial foothold to Domain Admin — Kerberoasting, lateral movement, and hardening notes.</p><div class="links"><a href="#" data-cursor>Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="tools"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Python</span></div><h3>Port Scanner (from scratch)</h3><p>A lightweight multithreaded port scanner built to understand how network reconnaissance really works under the hood.</p><div class="links"><a href="#" data-cursor>GitHub →</a></div></div>
-      <div class="card proj tilt-card" data-cat="tools"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Bash</span></div><h3>Recon Automation Script</h3><p>A one-command recon wrapper that chains subdomain enumeration, port scanning, and screenshotting for faster engagement kickoffs.</p><div class="links"><a href="#" data-cursor>GitHub →</a></div></div>
-      <div class="card proj tilt-card" data-cat="blue"><span class="spot"></span><div class="meta"><span class="badge">Blue Team</span><span class="badge">SIEM</span></div><h3>Home SOC Lab</h3><p>A detection lab with log collection and alerting to practice spotting real-world attack patterns end to end.</p><div class="links"><a href="#" data-cursor>Details →</a></div></div>
-      <div class="card proj tilt-card" data-cat="blue"><span class="spot"></span><div class="meta"><span class="badge">Detection</span><span class="badge">Sigma</span></div><h3>Detection Rules Pack</h3><p>A set of Sigma rules for common attacker behaviour (suspicious PowerShell, brute force, persistence) mapped to MITRE ATT&amp;CK.</p><div class="links"><a href="#" data-cursor>Details →</a></div></div>
+      <div class="card proj tilt-card" data-cat="offensive" data-open="web-idor"><span class="spot"></span><div class="meta"><span class="badge">CTF</span><span class="badge">Web</span></div><h3>Web Exploitation Writeup</h3><p>Chaining an IDOR into full account takeover on a deliberately vulnerable app — recon, exploitation, and the fix.</p><div class="links"><a href="#" data-open="web-idor">Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="offensive" data-open="ad-path"><span class="spot"></span><div class="meta"><span class="badge">Active Directory</span><span class="badge">Lab</span></div><h3>AD Attack Path</h3><p>Walking an on-prem Active Directory from initial foothold to Domain Admin — Kerberoasting, lateral movement, and hardening notes.</p><div class="links"><a href="#" data-open="ad-path">Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="tools" data-open="portscanner"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Python</span></div><h3>Port Scanner (from scratch)</h3><p>A lightweight multithreaded port scanner built to understand how network reconnaissance really works under the hood.</p><div class="links"><a href="#" data-open="portscanner">Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="tools" data-open="recon-script"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Bash</span></div><h3>Recon Automation Script</h3><p>A one-command recon wrapper that chains subdomain enumeration, port scanning, and screenshotting for faster engagement kickoffs.</p><div class="links"><a href="#" data-open="recon-script">Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="blue" data-open="soc-lab"><span class="spot"></span><div class="meta"><span class="badge">Blue Team</span><span class="badge">SIEM</span></div><h3>Home SOC Lab</h3><p>A detection lab with log collection and alerting to practice spotting real-world attack patterns end to end.</p><div class="links"><a href="#" data-open="soc-lab">Read →</a></div></div>
+      <div class="card proj tilt-card" data-cat="blue" data-open="detection-rules"><span class="spot"></span><div class="meta"><span class="badge">Detection</span><span class="badge">Sigma</span></div><h3>Detection Rules Pack</h3><p>A set of Sigma rules for common attacker behaviour (suspicious PowerShell, brute force, persistence) mapped to MITRE ATT&amp;CK.</p><div class="links"><a href="#" data-open="detection-rules">Read →</a></div></div>
     </div>
+  </section>
+
+  <!-- ===================== BLOG / WRITEUPS ===================== -->
+  <section id="blog" class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">// writeups</div>
+      <h2>Latest writeups</h2>
+      <p>Notes from labs, CTFs, and things I'm learning. Click any card to read the full post.</p>
+    </div>
+    <div class="grid-cards stagger" id="blogGrid"></div>
   </section>
 
   <!-- ===================== GITHUB (live) ===================== -->
@@ -1442,10 +1472,128 @@
     actions.push(
       { label: 'Go to Security toolbox', hint: 'section', run: () => go('#toolbox') },
       { label: 'Go to Security operations', hint: 'section', run: () => go('#soc') },
+      { label: 'Go to Blog / writeups', hint: 'section', run: () => go('#blog') },
       { label: 'View résumé (inline)', hint: 'action', run: () => openResume() },
       { label: 'Toggle CRT mode', hint: 'easter egg', run: () => crtToggle() },
       { label: 'Toggle typing sound', hint: 'action', run: () => toggleSound() }
     );
+
+    /* ================= WRITEUPS / BLOG LIBRARY ================= */
+    /* Add or edit entries here — project cards & blog cards both read from this. */
+    const library = {
+      'web-idor': {
+        title: 'Web Exploitation: IDOR → Account Takeover', date: 'Jul 2026',
+        excerpt: 'Chaining a simple access-control flaw into full account takeover.',
+        meta: '<span class="badge">CTF</span><span class="badge">Web</span>',
+        body: `<h4>Overview</h4><p>A walkthrough of finding and exploiting an Insecure Direct Object Reference (IDOR) that escalated into full account takeover on a deliberately vulnerable lab app.</p>
+          <h4>Recon</h4><p>Mapped the app and noticed profile data loading from <code>/api/user/{id}</code>. The id was sequential and the server never checked ownership.</p>
+          <h4>Exploitation</h4><pre>GET /api/user/1002/profile HTTP/1.1
+Cookie: session=attacker_session</pre><p>Swapping the id returned other users' data — including a password-reset token, which let me take over any account.</p>
+          <h4>Impact</h4><p>Complete account takeover of any user by iterating IDs — a critical access-control flaw.</p>
+          <h4>Remediation</h4><ul><li>Enforce object-level authorization on every request.</li><li>Use unguessable identifiers (UUIDs) as defense in depth.</li><li>Add automated access-control tests.</li></ul>
+          <p style="opacity:.6">(Template writeup — replace with your real notes.)</p>`
+      },
+      'ad-path': {
+        title: 'Active Directory: Foothold → Domain Admin', date: 'Jul 2026',
+        excerpt: 'Walking a lab AD from a low-priv shell up to Domain Admin.',
+        meta: '<span class="badge">Active Directory</span><span class="badge">Lab</span>',
+        body: `<h4>Overview</h4><p>Simulating an internal breach: starting from a low-privileged foothold and working up to Domain Admin in a lab Active Directory.</p>
+          <h4>Recon</h4><p>Enumerated the domain with BloodHound to map trust relationships and find the shortest path to high-value groups.</p>
+          <h4>Attack path</h4><ul><li>Kerberoasted a service account and cracked its weak password offline.</li><li>Used the account's local admin rights for lateral movement.</li><li>Dumped credentials and reached Domain Admin.</li></ul>
+          <h4>Hardening</h4><ul><li>Strong, rotated service-account passwords (or gMSAs).</li><li>Tiered admin model &amp; LAPS for local admin passwords.</li><li>Monitor for Kerberoasting (event 4769 anomalies).</li></ul>
+          <p style="opacity:.6">(Template — swap in your real lab notes.)</p>`
+      },
+      'portscanner': {
+        title: 'Building a Port Scanner from Scratch', date: 'Jun 2026',
+        excerpt: 'Understanding recon by building the tool, not just running it.',
+        meta: '<span class="badge">Tool</span><span class="badge">Python</span>',
+        body: `<h4>What &amp; why</h4><p>I built a small multithreaded TCP port scanner in Python to really understand connect scans, timeouts, and concurrency.</p>
+          <h4>Core idea</h4><pre>for port in range(1, 1025):
+    s = socket.socket()
+    s.settimeout(0.5)
+    if s.connect_ex((host, port)) == 0:
+        print("[+] " + str(port) + " open")
+    s.close()</pre>
+          <h4>Improvements</h4><ul><li>Thread pool for speed.</li><li>Banner grabbing on open ports.</li><li>JSON output for tooling.</li></ul>
+          <p>Building tools from scratch teaches far more than running someone else's.</p>`
+      },
+      'recon-script': {
+        title: 'One-Command Recon Automation', date: 'Jun 2026',
+        excerpt: 'Chaining recon steps into a single repeatable script.',
+        meta: '<span class="badge">Tool</span><span class="badge">Bash</span>',
+        body: `<h4>Overview</h4><p>A Bash wrapper that chains common recon steps into one command so I can start engagements faster.</p>
+          <h4>Pipeline</h4><ul><li>Subdomain enumeration</li><li>Live-host &amp; port discovery</li><li>Screenshotting web services</li><li>Tidy Markdown report</li></ul>
+          <h4>Lesson</h4><p>Automation isn't about skipping the fundamentals — it's about removing repetition so you can focus on the interesting findings.</p>`
+      },
+      'soc-lab': {
+        title: 'Home SOC Lab', date: 'May 2026',
+        excerpt: 'A detection lab to practice blue-team skills end to end.',
+        meta: '<span class="badge">Blue Team</span><span class="badge">SIEM</span>',
+        body: `<h4>Overview</h4><p>A home Security Operations Center lab to practice detection and response against real attack techniques.</p>
+          <h4>Stack</h4><ul><li>Log collection from endpoints &amp; network</li><li>A SIEM for search and alerting</li><li>An attacker VM to generate telemetry</li></ul>
+          <h4>What I practice</h4><ul><li>Writing detections for brute force, persistence, and lateral movement</li><li>Triaging alerts and cutting false positives</li></ul>
+          <p>Defending is a skill you build by attacking your own lab and watching what lights up.</p>`
+      },
+      'detection-rules': {
+        title: 'Detection Rules Pack (Sigma + ATT&CK)', date: 'May 2026',
+        excerpt: 'Portable detections mapped to MITRE ATT&CK.',
+        meta: '<span class="badge">Detection</span><span class="badge">Sigma</span>',
+        body: `<h4>Overview</h4><p>A growing pack of Sigma detection rules mapped to MITRE ATT&amp;CK, portable across SIEMs.</p>
+          <h4>Examples</h4><ul><li>Suspicious PowerShell (encoded commands)</li><li>Failed-then-success login bursts (brute force)</li><li>New service / run-key persistence</li></ul>
+          <h4>Why Sigma</h4><p>Write once, convert to many backends — detections shouldn't be locked to one vendor.</p>`
+      },
+      'blog-first-ctf': {
+        title: 'My First CTF: Lessons Learned', date: 'Jul 2026',
+        excerpt: 'What my first Capture The Flag taught me about persistence.',
+        meta: '<span class="badge">CTF</span><span class="badge">Beginner</span>',
+        body: `<h4>Jumping in</h4><p>My first CTF was equal parts exciting and humbling. I didn't solve much — but I learned how to <em>approach</em> problems.</p>
+          <h4>Takeaways</h4><ul><li>Enumerate thoroughly before trying exploits.</li><li>Read the error messages — they're hints.</li><li>Write notes as you go; future-you needs them.</li><li>Stuck ≠ failing. It's the job.</li></ul>
+          <p>Next goal: solve one box a week and publish the writeup.</p>`
+      },
+      'blog-linux-priv': {
+        title: 'A Gentle Intro to Linux Privilege Escalation', date: 'Jun 2026',
+        excerpt: 'Beginner-friendly tour of common Linux privesc paths.',
+        meta: '<span class="badge">Linux</span><span class="badge">Privesc</span>',
+        body: `<h4>The idea</h4><p>Privilege escalation is about turning limited access into full control. Here are the first things I check.</p>
+          <h4>Quick wins</h4><ul><li>SUID binaries: <code>find / -perm -4000 2&gt;/dev/null</code></li><li>Sudo rights: <code>sudo -l</code></li><li>Cron jobs &amp; writable scripts</li><li>Kernel version vs known exploits</li></ul>
+          <p>Always understand <em>why</em> a technique works before using it.</p>`
+      },
+      'blog-why-cyber': {
+        title: 'Why I Chose Cybersecurity', date: 'May 2026',
+        excerpt: "Why I chose this field — and how I'm building toward it.",
+        meta: '<span class="badge">Career</span>',
+        body: `<h4>Why security</h4><p>I like understanding how things really work, then figuring out how they break. Security rewards curiosity more than almost any field.</p>
+          <h4>My plan</h4><ul><li>Master the fundamentals: networking, Linux, scripting.</li><li>Practice relentlessly in labs and CTFs.</li><li>Publish what I learn.</li><li>Earn certifications to validate skills.</li></ul>
+          <p>I'm at the beginning — but I'm moving with intent.</p>`
+      },
+    };
+
+    /* ---- detail modal ---- */
+    const detailModal = document.getElementById('detailModal');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailBody = document.getElementById('detailBody');
+    function openDetail(id) {
+      const p = library[id]; if (!p) return;
+      detailTitle.textContent = p.title;
+      detailBody.innerHTML = (p.meta ? `<div class="detail-meta">${p.meta}</div>` : '') + p.body;
+      detailBody.scrollTop = 0;
+      detailModal.classList.add('open');
+    }
+    function closeDetail() { detailModal.classList.remove('open'); }
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+    detailModal.addEventListener('click', (e) => { if (e.target === detailModal) closeDetail(); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetail(); });
+    document.addEventListener('click', (e) => { const el = e.target.closest('[data-open]'); if (el) { e.preventDefault(); openDetail(el.dataset.open); } });
+
+    /* ---- render blog cards ---- */
+    const blogList = ['blog-first-ctf', 'blog-linux-priv', 'blog-why-cyber'];
+    const blogGrid = document.getElementById('blogGrid');
+    if (blogGrid) {
+      blogGrid.innerHTML = blogList.map(id => {
+        const p = library[id];
+        return `<div class="card blog-card" data-open="${id}"><span class="spot"></span><div class="meta">${p.meta || ''}</div><div class="date">${p.date}</div><h3>${p.title}</h3><p>${p.excerpt || ''}</p><div class="links"><a href="#" data-open="${id}">Read →</a></div></div>`;
+      }).join('');
+    }
 
     /* ---- particle network (optimized) ---- */
     (function () {
