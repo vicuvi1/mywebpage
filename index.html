@@ -3,488 +3,242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Victor Barbuta — Cybersecurity</title>
-  <meta name="description" content="Victor Barbuta — Cybersecurity specialist. Offensive & defensive security, penetration testing, and secure systems." />
-  <meta name="author" content="Victor Barbuta" />
-  <meta name="keywords" content="Victor Barbuta, cybersecurity, penetration testing, ethical hacking, red team, blue team, security researcher, CTF" />
-  <meta name="theme-color" content="#00e6a8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="manifest" href="manifest.json" />
-  <!-- Open Graph / social preview -->
-  <meta property="og:type" content="website" />
+  <title>Victor Barbuta — Cybersecurity Specialist</title>
+  <meta name="description" content="Victor Barbuta — Cybersecurity specialist. Offensive & defensive security, penetration testing, and secure-by-design engineering." />
   <meta property="og:title" content="Victor Barbuta — Cybersecurity Specialist" />
-  <meta property="og:description" content="Offensive & defensive security, penetration testing, and secure systems." />
-  <meta property="og:image" content="og-image.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Victor Barbuta — Cybersecurity Specialist" />
-  <meta name="twitter:description" content="Offensive & defensive security, penetration testing, and secure systems." />
-  <meta name="twitter:image" content="og-image.svg" />
+  <meta property="og:description" content="Offensive & defensive security, penetration testing, and secure-by-design engineering." />
+  <meta property="og:type" content="website" />
   <!-- ===================================================================
-       ▶ ADD YOUR PHOTO:
-         Drop a file named  photo.jpg  in this same folder.
-         It replaces the hacker placeholder automatically. (jpg or png)
-         For best results use a square-ish image, ~800x1000px.
-       ▶ EDIT TEXT: search for the words and type over them.
-       ▶ COLORS/FONTS: the :root block at the top of <style>.
-       ▶ LINKS: replace mailto: and the "#" placeholders in Contact/Work.
+       EDIT GUIDE
+       • Photo:   drop  photo.jpg  in this folder (auto-swaps the "VB" placeholder)
+       • Résumé:  drop  resume.pdf in this folder (the Résumé button downloads it)
+       • Form:    replace  your-form-id  in the <form action> (formspree.io — free)
+       • Text:    search for the words and type over them
+       • Colors:  the :root block below
        =================================================================== -->
   <style>
     :root {
-      --bg:        #070a10;
-      --bg-soft:   #0e141d;
-      --card:      #111925;
-      --border:    #1e2a3a;
-      --text:      #e6edf3;
-      --text-dim:  #9aa8ba;
-      --accent:    #00e6a8;
-      --accent-2:  #3b82f6;
-      --accent-3:  #a855f7;
-      --danger:    #ff5470;
-      --radius:    16px;
-      --maxw:      1140px;
+      --bg:        #08080c;
+      --bg-2:      #0e0e15;
+      --surface:   rgba(255,255,255,0.035);
+      --surface-2: rgba(255,255,255,0.06);
+      --border:    rgba(255,255,255,0.09);
+      --border-2:  rgba(255,255,255,0.18);
+      --text:      #f4f4f7;
+      --text-dim:  #9ca3b2;
+      --g1:        #818cf8;   /* indigo */
+      --g2:        #c084fc;   /* violet */
+      --g3:        #f0abfc;   /* pink   */
+      --accent:    #8b7cf6;
+      --grad:      linear-gradient(120deg, var(--g1), var(--g2) 52%, var(--g3));
+      --radius:    22px;
+      --maxw:      1120px;
       --ease:      cubic-bezier(.22,.61,.36,1);
-      --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-      --mono: "SFMono-Regular", ui-monospace, "Cascadia Code", "Fira Code", Consolas, monospace;
+      --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Inter, Roboto, Helvetica, Arial, sans-serif;
     }
     :root[data-theme="light"] {
-      --bg:#f4f7fb; --bg-soft:#e9eef5; --card:#ffffff; --border:#dce3ec;
-      --text:#0d1620; --text-dim:#54606d; --accent:#009e78; --accent-2:#2563eb; --accent-3:#7c3aed;
+      --bg:#fbfbfd; --bg-2:#f2f2f7; --surface:rgba(10,10,20,0.025); --surface-2:rgba(10,10,20,0.05);
+      --border:rgba(10,10,20,0.1); --border-2:rgba(10,10,20,0.2); --text:#0b0b12; --text-dim:#565663;
+      --accent:#6d5cf0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg); color: var(--text); font-family: var(--font);
-      line-height: 1.7; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-      overflow-x: hidden; cursor: none;
-    }
-    a { color: inherit; text-decoration: none; }
-    ::selection { background: var(--accent); color: #001a12; }
-    img { max-width: 100%; display: block; }
-    @media (hover: none) { body { cursor:auto; } .cursor-dot,.cursor-ring { display:none !important; } }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+    ::selection { background:var(--g2); color:#0b0b12; }
+    :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-    /* ---------- cursor ---------- */
-    .cursor-dot,.cursor-ring { position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9999; will-change:transform; }
-    .cursor-dot { width:6px; height:6px; background:var(--accent); margin:-3px 0 0 -3px; }
-    .cursor-ring { width:32px; height:32px; border:1.5px solid color-mix(in srgb, var(--accent) 70%, transparent); margin:-16px 0 0 -16px;
-      transition: width .22s var(--ease), height .22s var(--ease), margin .22s var(--ease), background .22s var(--ease), border-color .22s var(--ease); }
-    .cursor-ring.hover { width:54px; height:54px; margin:-27px 0 0 -27px; background: color-mix(in srgb, var(--accent) 12%, transparent); }
-
-    /* ---------- scroll progress ---------- */
-    .progress { position:fixed; top:0; left:0; height:3px; width:0%; z-index:100; transform-origin:left;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3)); box-shadow:0 0 12px var(--accent); }
-
-    /* ---------- backdrop ---------- */
-    #net { position:fixed; inset:0; z-index:-2; }
-    .backdrop { position:fixed; inset:0; z-index:-3;
+    /* soft static backdrop — no busy animation */
+    .bg { position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
-        radial-gradient(900px 520px at 82% -8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
-        radial-gradient(760px 520px at -5% 25%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 55%),
-        radial-gradient(700px 520px at 50% 115%, color-mix(in srgb, var(--accent-3) 10%, transparent), transparent 55%);
-    }
-    .blob { position:fixed; border-radius:50%; filter:blur(64px); opacity:.3; z-index:-2; will-change:transform; animation:float 20s ease-in-out infinite; }
-    .blob.b1 { width:320px; height:320px; background:var(--accent);  top:-70px; right:-50px; }
-    .blob.b2 { width:280px; height:280px; background:var(--accent-2); bottom:8%; left:-70px; animation-delay:-7s; }
-    .blob.b3 { width:240px; height:240px; background:var(--accent-3); top:42%; right:22%; animation-delay:-13s; }
-    @keyframes float { 0%,100%{ transform:translate3d(0,0,0) scale(1);} 33%{ transform:translate3d(26px,-34px,0) scale(1.08);} 66%{ transform:translate3d(-22px,22px,0) scale(.95);} }
+        radial-gradient(720px 480px at 78% -6%, color-mix(in srgb, var(--g1) 26%, transparent), transparent 60%),
+        radial-gradient(680px 520px at 8% 8%, color-mix(in srgb, var(--g2) 20%, transparent), transparent 58%); }
 
     .wrap { max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
     /* ---------- nav ---------- */
-    header { position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
-      background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom:1px solid var(--border); }
-    nav { display:flex; align-items:center; justify-content:space-between; height:68px; }
-    .brand { font-family:var(--mono); font-weight:700; letter-spacing:.5px; font-size:15px; }
-    .brand span { color:var(--accent); }
-    .nav-links { display:flex; gap:30px; align-items:center; }
-    .nav-links a { color:var(--text-dim); font-size:14px; font-weight:500; position:relative; transition:color .2s; }
-    .nav-links a::after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--accent); transition:width .28s var(--ease); }
-    .nav-links a:hover { color:var(--text); } .nav-links a:hover::after { width:100%; }
-    .theme-btn { background:var(--card); border:1px solid var(--border); color:var(--text); width:40px; height:40px; border-radius:11px; cursor:none; font-size:16px; display:grid; place-items:center; transition:border-color .2s, transform .3s var(--ease); }
-    .theme-btn:hover { border-color:var(--accent); transform:rotate(180deg); }
-    .burger { display:none; background:none; border:none; color:var(--text); font-size:24px; cursor:pointer; }
+    header { position:sticky; top:0; z-index:50; backdrop-filter:blur(16px);
+      background:color-mix(in srgb, var(--bg) 66%, transparent); border-bottom:1px solid var(--border); }
+    nav { display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .brand { font-weight:800; font-size:18px; letter-spacing:-.4px; }
+    .brand .dot { color:var(--g2); }
+    .nav-links { display:flex; gap:32px; align-items:center; }
+    .nav-links a { color:var(--text-dim); font-size:14.5px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    .nav-right { display:flex; gap:10px; align-items:center; }
+    .icon-btn { width:40px; height:40px; border-radius:11px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; cursor:pointer; display:grid; place-items:center; transition:border-color .2s, background .2s; }
+    .icon-btn:hover { border-color:var(--border-2); }
+    .burger { display:none; }
+
+    /* ---------- buttons ---------- */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:14px; font-weight:600; font-size:15px; cursor:pointer; border:1px solid transparent; transition:transform .2s var(--ease), box-shadow .25s var(--ease), background .2s, border-color .2s; }
+    .btn-primary { background:var(--accent); color:#fff; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 16px 40px -12px var(--accent); }
+    .btn-ghost { background:var(--surface); border-color:var(--border); color:var(--text); }
+    .btn-ghost:hover { transform:translateY(-2px); border-color:var(--border-2); }
 
     /* ---------- hero ---------- */
-    .hero { padding:88px 0 72px; }
-    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
-    .tag { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:13px; color:var(--accent);
-      border:1px solid var(--border); background:var(--card); padding:7px 15px; border-radius:999px; margin-bottom:26px; }
-    .pulse { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
-    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(0,230,168,.6);} 70%{box-shadow:0 0 0 10px rgba(0,230,168,0);} 100%{box-shadow:0 0 0 0 rgba(0,230,168,0);} }
+    .hero { padding:110px 0 90px; }
+    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:26px; }
+    .eyebrow .live { width:8px; height:8px; border-radius:50%; background:var(--g2); box-shadow:0 0 0 4px color-mix(in srgb, var(--g2) 22%, transparent); }
+    .hero h1 { font-size:clamp(52px, 9vw, 104px); line-height:.96; letter-spacing:-3px; font-weight:800; margin-bottom:8px; }
+    .hero .role { font-size:clamp(24px, 4.4vw, 46px); line-height:1.05; letter-spacing:-1px; font-weight:800; margin-bottom:26px;
+      background:var(--grad); background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmer 9s ease-in-out infinite; }
+    @keyframes shimmer { 0%,100%{ background-position:0% center; } 50%{ background-position:100% center; } }
+    .hero .lead { font-size:clamp(16px,2.2vw,19px); color:var(--text-dim); max-width:520px; margin-bottom:34px; }
+    .cta { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px; }
+    .stats { display:flex; gap:40px; flex-wrap:wrap; }
+    .stat .n { font-size:30px; font-weight:800; letter-spacing:-1px;
+      background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .stat .l { font-size:13px; color:var(--text-dim); margin-top:2px; }
 
-    .hero h1 { font-size:clamp(40px, 7.2vw, 74px); line-height:1.04; letter-spacing:-1.5px; margin-bottom:20px; font-weight:800; }
-    .grad { background:linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
-      background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 7s linear infinite; }
-    @keyframes shine { to { background-position:200% center; } }
-    .glitch { position:relative; display:inline-block; }
-    .glitch::before,.glitch::after { content:attr(data-text); position:absolute; left:0; top:0; width:100%; overflow:hidden; pointer-events:none; }
-    .glitch::before { color:var(--accent-2); animation:gl1 4s infinite steps(1) alternate-reverse; }
-    .glitch::after  { color:var(--danger);   animation:gl2 3.6s infinite steps(1) alternate-reverse; }
-    @keyframes gl1 { 0%,94%,100%{ clip-path:inset(0 0 100% 0); transform:translate(0);} 95%{ clip-path:inset(8% 0 60% 0); transform:translate(-3px,1px);} 98%{ clip-path:inset(42% 0 30% 0); transform:translate(3px,-1px);} }
-    @keyframes gl2 { 0%,92%,100%{ clip-path:inset(100% 0 0 0); transform:translate(0);} 93%{ clip-path:inset(60% 0 22% 0); transform:translate(3px,-2px);} 97%{ clip-path:inset(22% 0 55% 0); transform:translate(-2px,2px);} }
-
-    .hero p.lead { font-size:clamp(16px, 2.3vw, 19px); color:var(--text-dim); max-width:560px; margin-bottom:30px; }
-    .cta { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 24px; border-radius:12px; font-weight:600; font-size:15px; cursor:none; border:1px solid transparent; will-change:transform; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s; }
-    .btn-primary { background:var(--accent); color:#001a12; }
-    .btn-primary:hover { box-shadow:0 16px 40px -12px var(--accent); }
-    .btn-ghost { background:transparent; border-color:var(--border); color:var(--text); }
-    .btn-ghost:hover { border-color:var(--accent); }
-
-    .stat-strip { display:flex; gap:32px; flex-wrap:wrap; }
-    .stat .n { font-family:var(--mono); font-size:24px; font-weight:800; color:var(--accent); }
-    .stat .l { font-size:12.5px; color:var(--text-dim); letter-spacing:.3px; }
-
-    /* ---------- portrait ---------- */
-    .portrait-stage { position:relative; display:grid; place-items:center; padding:14px; }
-    .ring { position:absolute; width:min(420px,86%); aspect-ratio:1; border-radius:50%; z-index:0;
-      background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
-      filter:blur(2px); opacity:.55; animation:spin 14s linear infinite; }
-    .ring::after { content:""; position:absolute; inset:14px; border-radius:50%; background:var(--bg); }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .portrait { position:relative; z-index:1; width:min(340px,78%); aspect-ratio:4/5; border-radius:22px; overflow:hidden;
-      border:1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); background:var(--card);
-      box-shadow:0 40px 80px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.02) inset; transition:transform .2s var(--ease); }
+    /* portrait */
+    .portrait-stage { position:relative; display:grid; place-items:center; }
+    .portrait-glow { position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:var(--grad); filter:blur(60px); opacity:.4; z-index:0; }
+    .portrait { position:relative; z-index:1; width:min(360px,84%); aspect-ratio:4/5; border-radius:26px; overflow:hidden; border:1px solid var(--border); background:var(--bg-2); box-shadow:0 40px 90px -34px rgba(0,0,0,.7); }
     .portrait-ph, .portrait-img { position:absolute; inset:0; width:100%; height:100%; }
-    .portrait-ph svg { width:100%; height:100%; }
+    .portrait-ph { display:grid; place-items:center; font-size:96px; font-weight:800; letter-spacing:-3px; color:transparent; background:var(--grad); -webkit-background-clip:text; background-clip:text; }
+    .portrait-ph::before { content:""; position:absolute; inset:0; background:
+      radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--g2) 16%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--bg-2), var(--bg)); z-index:-1; }
     .portrait-img { object-fit:cover; opacity:0; transition:opacity .6s var(--ease); }
     .portrait-img.loaded { opacity:1; }
-    .p-badge { position:absolute; z-index:2; font-family:var(--mono); font-size:12px; padding:8px 13px; border-radius:11px;
-      background:color-mix(in srgb, var(--card) 88%, transparent); border:1px solid var(--border); backdrop-filter:blur(8px); display:flex; align-items:center; gap:7px; box-shadow:0 12px 30px -14px rgba(0,0,0,.6); }
-    .p-badge.top { top:6%; right:2%; animation:bob 5s ease-in-out infinite; }
-    .p-badge.bot { bottom:7%; left:0%; animation:bob 6s ease-in-out infinite reverse; }
-    @keyframes bob { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-9px);} }
-
-    /* ---------- marquee ---------- */
-    .marquee { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg-soft); overflow:hidden; padding:16px 0; }
-    .marquee-track { display:flex; gap:44px; width:max-content; animation:scroll 30s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state:paused; }
-    .marquee-track span { font-family:var(--mono); font-size:15px; color:var(--text-dim); display:flex; align-items:center; gap:44px; white-space:nowrap; }
-    .marquee-track span::after { content:"◆"; color:var(--accent); font-size:9px; }
-    @keyframes scroll { to { transform:translate3d(-50%,0,0); } }
 
     /* ---------- sections ---------- */
-    section { padding:92px 0; }
-    .sec-head { margin-bottom:48px; }
-    .sec-head .kicker { font-family:var(--mono); color:var(--accent); font-size:13px; letter-spacing:2px; text-transform:uppercase; }
-    .sec-head h2 { font-size:clamp(28px,4vw,42px); letter-spacing:-.5px; margin-top:10px; font-weight:800; }
-    .sec-head p { color:var(--text-dim); max-width:620px; margin-top:12px; }
+    section { padding:100px 0; }
+    .sec-head { max-width:640px; margin-bottom:52px; }
+    .sec-head .kicker { font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:transparent; background:var(--grad); -webkit-background-clip:text; background-clip:text; }
+    .sec-head h2 { font-size:clamp(30px,5vw,48px); letter-spacing:-1.5px; font-weight:800; margin-top:12px; line-height:1.05; }
+    .sec-head p { color:var(--text-dim); margin-top:14px; font-size:17px; }
 
-    .grid-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(258px,1fr)); gap:20px; }
-    .card { position:relative; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; overflow:hidden;
-      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s; will-change:transform; }
-    .card::before { content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; background:linear-gradient(130deg, var(--accent), transparent 42%);
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .3s; pointer-events:none; }
-    .card:hover { border-color:transparent; box-shadow:0 26px 52px -28px rgba(0,230,168,.45); }
-    .card:hover::before { opacity:1; }
-    .card .spot { position:absolute; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%); pointer-events:none; opacity:0; transform:translate(-50%,-50%); transition:opacity .25s; z-index:0; }
-    .card:hover .spot { opacity:1; }
-    .card > *:not(.spot) { position:relative; z-index:1; }
-    .card .ico { font-size:28px; margin-bottom:14px; }
-    .card h3 { font-size:18px; margin-bottom:8px; }
-    .card p { color:var(--text-dim); font-size:14.5px; }
+    /* glassy cards */
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+    .card { position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:30px; backdrop-filter:blur(10px);
+      transition:transform .28s var(--ease), border-color .25s, background .25s; }
+    .card:hover { transform:translateY(-6px); border-color:var(--border-2); background:var(--surface-2); }
+    .card .ico { width:52px; height:52px; border-radius:14px; display:grid; place-items:center; font-size:24px; margin-bottom:18px; background:color-mix(in srgb, var(--g2) 14%, transparent); border:1px solid var(--border); }
+    .card h3 { font-size:19px; font-weight:700; margin-bottom:9px; letter-spacing:-.3px; }
+    .card p { color:var(--text-dim); font-size:15px; }
 
     /* about */
-    .about-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center; }
-    .about-grid p { color:var(--text-dim); margin-bottom:16px; }
-    .about-grid p strong { color:var(--text); }
-    .facts { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
-    .fact { background:var(--card); border:1px solid var(--border); border-radius:13px; padding:20px; transition:transform .25s var(--ease), border-color .2s; }
-    .fact:hover { transform:translateY(-4px); border-color:var(--accent); }
-    .fact .n { font-size:26px; font-weight:800; color:var(--accent); font-family:var(--mono); }
-    .fact .l { font-size:13px; color:var(--text-dim); }
-
-    .terminal { background:#04070c; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--mono); font-size:13.5px; overflow:hidden;
-      box-shadow:0 40px 80px -34px rgba(0,0,0,.8); transition:transform .2s var(--ease); }
-    .term-bar { display:flex; gap:7px; padding:12px 14px; border-bottom:1px solid var(--border); background:#080d14; align-items:center; }
-    .dot { width:11px; height:11px; border-radius:50%; } .dot.r{background:#ff5f56;} .dot.y{background:#ffbd2e;} .dot.g{background:#27c93f;}
-    .term-title { margin-left:10px; color:var(--text-dim); font-size:12px; }
-    .term-body { padding:18px; color:#c7d2dd; min-height:240px; }
-    .term-body .line { white-space:pre-wrap; }
-    .term-body .p { color:var(--accent); } .term-body .c { color:#7dd3fc; } .term-body .o { color:var(--text-dim); }
-    .cursor-blink { display:inline-block; width:9px; height:16px; background:var(--accent); vertical-align:-2px; animation:blink 1s steps(2) infinite; }
-    @keyframes blink { 50% { opacity:0; } }
-
-    /* interactive terminal */
-    #term { max-height:300px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
-    #term::-webkit-scrollbar { width:8px; } #term::-webkit-scrollbar-thumb { background:var(--border); border-radius:8px; }
-    .term-input-line { display:flex; align-items:center; gap:8px; margin-top:2px; }
-    .term-prompt { color:var(--accent); white-space:nowrap; }
-    #termIn { flex:1; min-width:0; background:transparent; border:none; outline:none; color:#c7d2dd; font-family:var(--mono); font-size:13.5px; caret-color:var(--accent); cursor:text; padding:0; }
-    .term-body, #termIn { cursor:text; }
-    .term-body .cmd { color:#e6edf3; } .term-body .err { color:var(--danger); } .term-body .ok { color:var(--accent); } .term-body .dim { color:var(--text-dim); }
-    .term-hint { display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--text-dim); margin-left:auto; }
-    .term-hint b { color:var(--accent); }
-
-    /* matrix rain overlay */
-    #matrix { position:fixed; inset:0; z-index:9998; background:#000; display:none; }
-    #matrix.on { display:block; }
-    .matrix-exit { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:9999; display:none;
-      font-family:var(--mono); font-size:13px; color:#00ff9c; background:rgba(0,0,0,.6); border:1px solid #00ff9c; padding:8px 16px; border-radius:10px; }
-    #matrix.on ~ .matrix-exit { display:block; }
-
-    /* toast */
-    .toast { position:fixed; bottom:26px; left:50%; z-index:9999; transform:translate(-50%,20px); opacity:0; pointer-events:none;
-      background:var(--card); border:1px solid var(--accent); color:var(--text); padding:12px 20px; border-radius:12px; font-size:14px; font-family:var(--mono);
-      box-shadow:0 16px 40px -14px rgba(0,0,0,.6); transition:opacity .3s var(--ease), transform .3s var(--ease); }
-    .toast.show { opacity:1; transform:translate(-50%,0); }
-
-    /* preloader / boot */
-    #preloader { position:fixed; inset:0; z-index:10000; background:#04070c; display:grid; place-items:center; transition:opacity .5s var(--ease), visibility .5s; }
-    #preloader.done { opacity:0; visibility:hidden; }
-    #preloader .boot { font-family:var(--mono); font-size:14px; color:var(--accent); width:min(90%,520px); }
-    #preloader pre { white-space:pre-wrap; margin:0; line-height:1.95; }
-    #preloader .boot::after { content:"_"; animation:blink 1s steps(2) infinite; }
-
-    /* back to top */
-    .to-top { position:fixed; bottom:24px; right:24px; z-index:80; width:46px; height:46px; border-radius:12px; border:1px solid var(--border);
-      background:var(--card); color:var(--accent); font-size:20px; cursor:none; display:grid; place-items:center; opacity:0; transform:translateY(16px); pointer-events:none;
-      transition:opacity .3s var(--ease), transform .3s var(--ease), border-color .2s, box-shadow .2s; }
-    .to-top.show { opacity:1; transform:none; pointer-events:auto; }
-    .to-top:hover { border-color:var(--accent); box-shadow:0 10px 26px -10px var(--accent); }
-
-    /* nav active + palette button */
-    .nav-links a.active { color:var(--text); } .nav-links a.active::after { width:100%; }
-    .kbd-btn { font-family:var(--mono); font-size:12px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); border-radius:9px; padding:0 11px; height:40px; cursor:none; transition:border-color .2s, color .2s; }
-    .kbd-btn:hover { border-color:var(--accent); color:var(--accent); }
-
-    /* command palette */
-    .palette { position:fixed; inset:0; z-index:9997; background:rgba(0,0,0,.5); backdrop-filter:blur(4px); display:none; padding-top:12vh; justify-content:center; }
-    .palette.open { display:flex; }
-    .palette-box { width:min(92%,560px); align-self:flex-start; background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.8); animation:cardIn .2s var(--ease); }
-    #paletteIn { width:100%; padding:18px 20px; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); font-family:var(--mono); font-size:15px; outline:none; cursor:text; }
-    .palette-list { max-height:340px; overflow-y:auto; padding:8px; }
-    .p-item { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; cursor:none; font-size:14.5px; }
-    .p-item .p-hint { font-family:var(--mono); font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
-    .p-item.sel, .p-item:hover { background:var(--bg-soft); }
-    .p-item.sel { box-shadow:inset 0 0 0 1px var(--accent); }
-    .p-empty { padding:18px; color:var(--text-dim); font-family:var(--mono); text-align:center; }
-
-    /* certifications */
-    .cert-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-    .cert-ico { font-size:26px; }
-    .cert-status { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:4px 11px; border-radius:999px; border:1px solid var(--border); white-space:nowrap; }
-    .cert-status.planned { color:var(--text-dim); }
-    .cert-status.progress { color:var(--accent); border-color:color-mix(in srgb, var(--accent) 50%, var(--border)); background:color-mix(in srgb, var(--accent) 10%, transparent); }
-    .cert-status.earned { color:#001a12; background:var(--accent); border-color:var(--accent); }
-    .cert h3 { margin-bottom:8px; } .cert p { color:var(--text-dim); font-size:14.5px; }
-
-    /* SOC dashboard */
-    .soc-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:16px; margin-bottom:16px; }
-    .soc-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
-    .soc-card .lbl { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--text-dim); }
-    .soc-card .val { font-family:var(--mono); font-size:28px; font-weight:800; color:var(--accent); margin-top:6px; }
-    .soc-card .val.ok { color:#27c93f; }
-    .soc-main { display:grid; grid-template-columns:280px 1fr; gap:16px; }
-    .soc-radar { background:#04070c; border:1px solid var(--border); border-radius:14px; display:grid; place-items:center; min-height:240px; }
-    .soc-log { background:#04070c; border:1px solid var(--border); border-radius:14px; padding:16px; font-family:var(--mono); font-size:12.5px; min-height:240px; overflow:hidden; }
-    .soc-log .l { margin-bottom:7px; color:var(--text-dim); line-height:1.4; }
-    .soc-log .l .t { color:var(--accent); } .soc-log .l .b { color:#ff5470; }
-    @media(max-width:720px){ .soc-main{ grid-template-columns:1fr; } }
-
-    /* security toolbox */
-    .tool-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
-    .tool { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
-    .tool h3 { display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:16px; }
-    .tool label { font-size:12px; color:var(--text-dim); font-family:var(--mono); display:block; margin-bottom:6px; }
-    .tool textarea, .tool input[type=text], .tool select { width:100%; background:var(--bg-soft); border:1px solid var(--border); border-radius:10px; padding:11px 13px; color:var(--text); font-family:var(--mono); font-size:13.5px; cursor:text; transition:border-color .2s; }
-    .tool textarea:focus, .tool input:focus, .tool select:focus { outline:none; border-color:var(--accent); }
-    .tool select { cursor:none; } .tool textarea { resize:vertical; min-height:60px; }
-    .tool .row { display:flex; gap:10px; align-items:center; margin-top:12px; }
-    .tool .row select { flex:1; }
-    .tool .out { margin-top:12px; background:#04070c; border:1px solid var(--border); border-radius:10px; padding:12px; font-family:var(--mono); font-size:12.5px; color:var(--accent); word-break:break-all; min-height:22px; }
-    .small-btn { font-family:var(--mono); font-size:12px; color:var(--text-dim); background:var(--bg-soft); border:1px solid var(--border); border-radius:9px; padding:9px 13px; cursor:none; transition:color .2s, border-color .2s; white-space:nowrap; }
-    .small-btn:hover { color:var(--accent); border-color:var(--accent); }
-    .pw-meter { height:8px; border-radius:999px; background:var(--bg-soft); overflow:hidden; margin-top:14px; }
-    .pw-bar { height:100%; width:0; border-radius:999px; transition:width .3s var(--ease), background .3s; }
-    .pw-label { margin-top:9px; font-family:var(--mono); font-size:12.5px; color:var(--text-dim); }
-
-    /* skill bars */
-    .skillbars { margin-top:42px; max-width:640px; }
-    .skillbar { margin-bottom:16px; }
-    .skillbar .top { display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:7px; }
-    .skillbar .top .lv { font-family:var(--mono); color:var(--text-dim); font-size:12px; }
-    .skillbar .track { height:8px; background:var(--bg-soft); border-radius:999px; overflow:hidden; }
-    .skillbar .fill { height:100%; width:0; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:999px; transition:width 1.1s var(--ease); }
-
-    /* résumé modal */
-    .modal { position:fixed; inset:0; z-index:9996; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); display:none; place-items:center; padding:24px; }
-    .modal.open { display:grid; }
-    .modal-box { width:min(920px,96%); height:86vh; background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; animation:cardIn .2s var(--ease); }
-    .modal-bar { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--border); }
-    .modal-bar b { font-family:var(--mono); }
-    .modal-bar .grp { display:flex; gap:10px; }
-    .modal-close { background:var(--bg-soft); border:1px solid var(--border); color:var(--text); border-radius:9px; padding:7px 13px; cursor:none; font-family:var(--mono); font-size:13px; transition:border-color .2s, color .2s; }
-    .modal-close:hover { border-color:var(--accent); color:var(--accent); }
-    .modal iframe { flex:1; border:0; background:#fff; }
-
-    /* CRT mode */
-    body.crt::before { content:""; position:fixed; inset:0; z-index:9994; pointer-events:none; background:repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0, rgba(0,0,0,.16) 1px, transparent 1px, transparent 3px); }
-    body.crt::after { content:""; position:fixed; inset:0; z-index:9994; pointer-events:none; background:radial-gradient(circle at 50% 50%, transparent 58%, rgba(0,0,0,.4)); animation:flicker .12s infinite; }
-    @keyframes flicker { 0%{opacity:.92;} 50%{opacity:1;} 100%{opacity:.94;} }
-
-    /* cursor trail */
-    .trail { position:fixed; top:0; left:0; width:6px; height:6px; border-radius:50%; background:var(--accent); pointer-events:none; z-index:9993; opacity:.55; transform:translate(-50%,-50%); }
-
-    /* terminal sound button */
-    .term-sound { margin-left:8px; background:none; border:none; color:var(--text-dim); cursor:none; font-size:13px; padding:0; }
-    .term-sound:hover { color:var(--accent); }
-
-    /* detail / writeup modal */
-    .detail-box { height:auto; max-height:86vh; }
-    .detail-body { padding:28px 30px; overflow-y:auto; }
-    .detail-meta { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
-    .detail-body h4 { margin:22px 0 8px; font-size:16px; color:var(--accent); }
-    .detail-body h4:first-child { margin-top:0; }
-    .detail-body p { color:var(--text-dim); margin-bottom:12px; }
-    .detail-body ul { color:var(--text-dim); margin:0 0 14px 20px; }
-    .detail-body li { margin-bottom:6px; }
-    .detail-body pre { background:#04070c; border:1px solid var(--border); border-radius:10px; padding:14px; overflow-x:auto; font-family:var(--mono); font-size:13px; color:#c7d2dd; margin-bottom:14px; }
-    .detail-body code { font-family:var(--mono); color:var(--accent); font-size:.92em; }
-
-    /* blog cards */
-    .blog-card .date { font-family:var(--mono); font-size:12px; color:var(--text-dim); margin-bottom:8px; }
-    .blog-card { cursor:none; }
-
-    /* ============ RESTRAINT / A11Y / PERF PASS ============
-       Native cursor, calmer background, no glitch, clear focus rings, SR helper. */
-    body { cursor:auto !important; }
-    .cursor-dot, .cursor-ring, .trail { display:none !important; }
-    a[href], button, label, summary, .chip, .filter-btn, .gh-repo, .social,
-    .theme-btn, .kbd-btn, .to-top, .p-item, .card[data-open], .blog-card, [data-open] { cursor:pointer !important; }
-    input, textarea, #termIn { cursor:text !important; }
-    /* drop the name glitch + third accent blob for a calmer, more professional look */
-    .glitch::before, .glitch::after { display:none !important; }
-    .blob.b3 { display:none; }
-    .blob { opacity:.15; filter:blur(74px); }
-    /* clear keyboard focus rings (cursor is native again) */
-    :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:5px; }
-    /* screen-reader-only helper */
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .about-grid .lede { font-size:clamp(20px,2.6vw,26px); font-weight:600; letter-spacing:-.5px; line-height:1.4; margin-bottom:20px; }
+    .about-grid p.body { color:var(--text-dim); margin-bottom:16px; font-size:16px; }
+    .about-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 
     /* skills */
-    .skill-cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:22px; }
-    .skill-group h4 { font-size:15px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
-    .skill-group h4 .b { color:var(--accent); }
+    .skill-groups { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
+    .skill-group { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px; }
+    .skill-group h4 { font-size:14px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-dim); margin-bottom:16px; }
     .chips { display:flex; flex-wrap:wrap; gap:9px; }
-    .chip { font-family:var(--mono); font-size:12.5px; color:var(--text-dim); border:1px solid var(--border); background:var(--bg-soft); padding:6px 12px; border-radius:8px; cursor:none;
-      transition:color .2s, border-color .2s, transform .2s var(--ease), background .2s; }
-    .chip:hover { color:#001a12; background:var(--accent); border-color:var(--accent); transform:translateY(-3px) scale(1.05); }
+    .chip { font-size:13.5px; font-weight:500; padding:8px 14px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); transition:border-color .2s, transform .2s var(--ease); }
+    .chip:hover { border-color:var(--border-2); transform:translateY(-2px); }
 
     /* projects */
-    .proj { display:flex; flex-direction:column; }
-    .proj .meta { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
-    .badge { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:4px 9px; border-radius:6px; background:var(--bg-soft); border:1px solid var(--border); color:var(--text-dim); }
-    .proj h3 { margin-bottom:8px; }
-    .proj .links { margin-top:auto; padding-top:16px; display:flex; gap:16px; }
-    .proj .links a { color:var(--accent); font-size:14px; font-family:var(--mono); cursor:none; }
-    .proj .links a:hover { text-decoration:underline; }
-
-    /* filter tabs */
-    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
-    .filter-btn { font-family:var(--mono); font-size:13px; color:var(--text-dim); background:var(--bg-soft); border:1px solid var(--border); padding:9px 17px; border-radius:10px; cursor:none; transition:color .2s, background .2s, border-color .2s, transform .2s var(--ease); }
-    .filter-btn:hover { color:var(--text); border-color:var(--accent); transform:translateY(-2px); }
-    .filter-btn.active { color:#001a12; background:var(--accent); border-color:var(--accent); }
+    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; }
+    .filter-btn { font-size:14px; font-weight:500; color:var(--text-dim); background:var(--surface); border:1px solid var(--border); padding:9px 18px; border-radius:11px; cursor:pointer; transition:all .2s var(--ease); }
+    .filter-btn:hover { color:var(--text); border-color:var(--border-2); }
+    .filter-btn.active { color:#fff; background:var(--accent); border-color:var(--accent); }
+    .proj { cursor:pointer; display:flex; flex-direction:column; }
+    .proj .tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+    .tag { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; padding:5px 10px; border-radius:7px; background:var(--surface-2); border:1px solid var(--border); color:var(--text-dim); }
+    .proj h3 { margin-bottom:9px; }
+    .proj .more { margin-top:16px; font-size:14px; font-weight:600; color:transparent; background:var(--grad); -webkit-background-clip:text; background-clip:text; }
     .card.hide { display:none; }
-    .card.filtering { animation:cardIn .45s var(--ease); }
-    @keyframes cardIn { from{ opacity:0; transform:translateY(16px) scale(.98);} to{ opacity:1; transform:none;} }
 
-    /* github widget */
-    .gh-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:28px; }
-    .gh-tile { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 18px; text-align:center; transition:transform .25s var(--ease), border-color .2s; }
-    .gh-tile:hover { transform:translateY(-4px); border-color:var(--accent); }
-    .gh-tile .n { font-family:var(--mono); font-size:32px; font-weight:800; color:var(--accent); line-height:1; }
+    /* github */
+    .gh-tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:26px; }
+    .gh-tile { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:26px 18px; text-align:center; }
+    .gh-tile .n { font-size:34px; font-weight:800; letter-spacing:-1px; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
     .gh-tile .l { font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.2px; margin-top:8px; }
     .gh-repos { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
-    .gh-repo { display:flex; flex-direction:column; gap:9px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; cursor:none; transition:transform .25s var(--ease), border-color .2s, box-shadow .2s; }
-    .gh-repo:hover { transform:translateY(-5px); border-color:var(--accent); box-shadow:0 22px 44px -26px rgba(0,230,168,.4); }
-    .gh-repo .name { font-family:var(--mono); color:var(--accent); font-weight:600; word-break:break-word; }
-    .gh-repo .desc { font-size:13.5px; color:var(--text-dim); flex:1; line-height:1.55; }
-    .gh-repo .foot { display:flex; gap:16px; font-size:12.5px; color:var(--text-dim); font-family:var(--mono); flex-wrap:wrap; }
-    .gh-lang { display:inline-flex; align-items:center; gap:6px; }
-    .gh-dot { width:10px; height:10px; border-radius:50%; background:var(--accent-2); }
-    .gh-msg { grid-column:1/-1; color:var(--text-dim); font-family:var(--mono); font-size:14px; padding:8px 0; }
+    .gh-repo { display:flex; flex-direction:column; gap:10px; }
+    .gh-repo .name { font-weight:700; }
+    .gh-repo .desc { color:var(--text-dim); font-size:14px; flex:1; }
+    .gh-repo .foot { display:flex; gap:16px; font-size:13px; color:var(--text-dim); }
+    .gh-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--g1); margin-right:6px; }
+    .gh-msg { grid-column:1/-1; color:var(--text-dim); font-size:15px; }
 
-    /* contact form */
-    .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:start; text-align:left; position:relative; z-index:1; }
-    .form-field { margin-bottom:16px; }
-    .form-field label { display:block; font-size:13px; color:var(--text-dim); margin-bottom:6px; font-family:var(--mono); }
-    .form-field input, .form-field textarea { width:100%; background:var(--bg-soft); border:1px solid var(--border); border-radius:11px; padding:13px 15px; color:var(--text); font-family:var(--font); font-size:14.5px; cursor:text; transition:border-color .2s, box-shadow .2s; }
-    .form-field input:focus, .form-field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
-    .form-field textarea { resize:vertical; min-height:130px; }
-    .contact-side h2 { margin-bottom:12px; }
-    .contact-side p { margin:0 0 22px; color:var(--text-dim); }
-    @media(max-width:780px){ .contact-grid{ grid-template-columns:1fr; gap:32px; } }
-
-    /* timeline */
-    .timeline { position:relative; padding-left:28px; }
-    .timeline::before { content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--accent), var(--accent-2), var(--accent-3)); }
-    .tl-item { position:relative; margin-bottom:30px; }
-    .tl-item::before { content:""; position:absolute; left:-27px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); }
-    .tl-item .when { font-family:var(--mono); font-size:13px; color:var(--accent); }
-    .tl-item h4 { margin:4px 0; }
-    .tl-item p { color:var(--text-dim); font-size:14.5px; }
+    /* certs */
+    .cert-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+    .cert-ico { font-size:26px; }
+    .cert-status { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; padding:5px 12px; border-radius:999px; border:1px solid var(--border); white-space:nowrap; }
+    .cert-status.progress { color:var(--g2); border-color:color-mix(in srgb, var(--g2) 45%, var(--border)); }
+    .cert-status.earned { color:#fff; background:var(--accent); border-color:var(--accent); }
 
     /* contact */
-    .contact-box { position:relative; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:56px 40px; text-align:center; overflow:hidden; }
-    .contact-box::after { content:""; position:absolute; inset:0; background:radial-gradient(500px 200px at 50% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%); pointer-events:none; }
-    .contact-box h2 { font-size:clamp(26px,4vw,38px); margin-bottom:12px; position:relative; }
-    .contact-box p { color:var(--text-dim); max-width:520px; margin:0 auto 26px; position:relative; }
-    .socials { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
-    .social { display:inline-flex; align-items:center; gap:9px; padding:12px 20px; border-radius:12px; border:1px solid var(--border); background:var(--bg-soft); font-size:14px; font-family:var(--mono); cursor:none;
-      transition:border-color .2s, transform .25s var(--ease), color .2s; will-change:transform; }
-    .social:hover { border-color:var(--accent); color:var(--accent); }
+    .contact-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:48px; }
+    .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start; }
+    .field { margin-bottom:16px; }
+    .field label { display:block; font-size:13px; color:var(--text-dim); margin-bottom:7px; font-weight:500; }
+    .field input, .field textarea { width:100%; background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:14px 16px; color:var(--text); font-family:var(--font); font-size:15px; transition:border-color .2s, box-shadow .2s; }
+    .field input:focus, .field textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+    .field textarea { resize:vertical; min-height:130px; }
+    .contact-side h3 { font-size:24px; font-weight:800; letter-spacing:-.5px; margin-bottom:12px; }
+    .contact-side p { color:var(--text-dim); margin-bottom:22px; }
+    .socials { display:flex; flex-direction:column; gap:12px; }
+    .social { display:inline-flex; align-items:center; gap:12px; padding:14px 18px; border-radius:13px; border:1px solid var(--border); background:var(--bg-2); font-weight:500; transition:border-color .2s, transform .2s var(--ease); }
+    .social:hover { border-color:var(--border-2); transform:translateX(4px); }
+    .social .k { color:var(--text-dim); font-size:13px; margin-left:auto; }
 
-    footer { border-top:1px solid var(--border); padding:34px 0; text-align:center; color:var(--text-dim); font-size:13px; }
-    footer .brand { font-size:13px; }
+    footer { border-top:1px solid var(--border); padding:40px 0; text-align:center; color:var(--text-dim); font-size:14px; }
+    footer .brand { display:inline-block; margin-bottom:8px; }
+
+    /* modal */
+    .modal { position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); display:none; padding:24px; }
+    .modal.open { display:grid; place-items:center; }
+    .modal-box { width:min(680px,100%); max-height:86vh; background:var(--bg-2); border:1px solid var(--border-2); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
+    .modal-bar { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid var(--border); }
+    .modal-bar b { font-size:18px; letter-spacing:-.3px; }
+    .modal-close { background:var(--surface); border:1px solid var(--border); color:var(--text); padding:8px 14px; border-radius:10px; cursor:pointer; font-size:14px; }
+    .modal-close:hover { border-color:var(--border-2); }
+    .modal-body { padding:26px 28px; overflow-y:auto; }
+    .modal-body .tags { margin-bottom:20px; }
+    .modal-body h4 { margin:22px 0 8px; font-size:16px; color:var(--g2); }
+    .modal-body h4:first-child { margin-top:0; }
+    .modal-body p { color:var(--text-dim); margin-bottom:12px; }
+    .modal-body ul { color:var(--text-dim); margin:0 0 14px 20px; }
+    .modal-body li { margin-bottom:6px; }
+    .modal-body pre { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:14px; overflow-x:auto; font-family:ui-monospace,Consolas,monospace; font-size:13px; color:var(--text); margin-bottom:14px; }
+    .modal-body code { font-family:ui-monospace,Consolas,monospace; color:var(--g2); }
+
+    /* back to top */
+    .to-top { position:fixed; bottom:26px; right:26px; z-index:60; width:48px; height:48px; border-radius:14px; border:1px solid var(--border); background:var(--bg-2); color:var(--text); font-size:20px; cursor:pointer; display:grid; place-items:center; opacity:0; transform:translateY(14px); pointer-events:none; transition:opacity .3s var(--ease), transform .3s var(--ease), border-color .2s; }
+    .to-top.show { opacity:1; transform:none; pointer-events:auto; }
+    .to-top:hover { border-color:var(--border-2); }
 
     /* reveal */
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.in { opacity:1; transform:none; }
-    .stagger > * { opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
-    .stagger.in > * { opacity:1; transform:none; }
 
-    @media (prefers-reduced-motion: reduce) { *{ animation:none !important; transition:none !important; } .reveal,.stagger>*{ opacity:1; transform:none; } }
+    @media (prefers-reduced-motion: reduce) { *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
 
     @media (max-width: 900px) {
-      body { cursor:auto; } .cursor-dot,.cursor-ring{ display:none; }
-      .btn,.chip,.social,.theme-btn,.proj .links a,.filter-btn,.gh-repo,.to-top,.kbd-btn,.p-item,.small-btn,.modal-close,.term-sound,.tool select{ cursor:pointer; }
-      .hero-grid, .about-grid { grid-template-columns:1fr; }
-      .portrait-stage { order:-1; margin-bottom:8px; }
-      .nav-links { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--border); padding:8px 0; }
-      .nav-links.open { display:flex; } .nav-links a { padding:12px 24px; width:100%; }
-      .burger { display:block; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
+      .hero { padding:70px 0 60px; }
+      .portrait-stage { order:-1; margin-bottom:10px; }
+      .about-grid .about-cards { order:2; }
+      .nav-links { display:none; position:absolute; top:70px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--border); padding:8px 0; }
+      .nav-links.open { display:flex; }
+      .nav-links a { padding:14px 24px; }
+      .burger { display:grid; }
+      .contact-card { padding:28px; }
     }
   </style>
 </head>
 <body>
-  <div id="preloader"><div class="boot"><pre id="bootLog"></pre></div></div>
+  <div class="bg"></div>
+  <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
-  <div class="backdrop"></div>
-  <canvas id="net"></canvas>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  <div class="cursor-dot"></div><div class="cursor-ring"></div>
-  <div class="progress" id="progress"></div>
-  <canvas id="matrix"></canvas>
-  <div class="matrix-exit">press <b>ESC</b> or click to exit · matrix mode</div>
-  <div class="toast" id="toast"></div>
-  <button id="toTop" class="to-top" aria-label="Back to top" data-cursor>↑</button>
-  <div id="palette" class="palette" aria-hidden="true">
-    <div class="palette-box">
-      <input id="paletteIn" type="text" autocomplete="off" spellcheck="false" placeholder="Jump to a section or run a command…   (Esc to close)" aria-label="Command palette" />
-      <div class="palette-list" id="paletteList"></div>
-    </div>
-  </div>
-  <div id="resumeModal" class="modal" aria-hidden="true">
+  <!-- writeup modal -->
+  <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-box">
-      <div class="modal-bar"><b>résumé.pdf</b><div class="grp"><a class="modal-close" href="resume.pdf" download data-cursor>Download ↓</a><button class="modal-close" id="resumeClose" data-cursor>Close ✕</button></div></div>
-      <iframe id="resumeFrame" title="Résumé" src="about:blank"></iframe>
-    </div>
-  </div>
-  <div id="detailModal" class="modal" aria-hidden="true">
-    <div class="modal-box detail-box">
-      <div class="modal-bar"><b id="detailTitle">…</b><button class="modal-close" id="detailClose" data-cursor>Close ✕</button></div>
-      <div class="detail-body" id="detailBody"></div>
+      <div class="modal-bar"><b id="modalTitle">…</b><button class="modal-close" id="modalClose">Close ✕</button></div>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
@@ -492,20 +246,18 @@
   <header>
     <div class="wrap">
       <nav>
-        <a href="#top" class="brand" data-cursor>victor<span>@</span>barbuta:~$</a>
+        <a href="#top" class="brand">Victor Barbuta<span class="dot">.</span></a>
         <div class="nav-links" id="navlinks">
-          <a href="#about" data-cursor>About</a>
-          <a href="#skills" data-cursor>Skills</a>
-          <a href="#toolbox" data-cursor>Toolbox</a>
-          <a href="#work" data-cursor>Work</a>
-          <a href="#blog" data-cursor>Blog</a>
-          <a href="#github" data-cursor>GitHub</a>
-          <a href="#contact" data-cursor>Contact</a>
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#github">GitHub</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <button class="kbd-btn" id="paletteBtn" title="Command palette (Ctrl+K)" data-cursor>⌘K</button>
-          <button class="theme-btn" id="theme" title="Toggle theme" data-cursor>◐</button>
-          <button class="burger" id="burger">☰</button>
+        <div class="nav-right">
+          <button class="icon-btn" id="theme" aria-label="Toggle theme">◐</button>
+          <button class="icon-btn burger" id="burger" aria-label="Menu">☰</button>
         </div>
       </nav>
     </div>
@@ -515,310 +267,148 @@
   <div id="top" class="hero wrap">
     <div class="hero-grid">
       <div>
-        <div class="tag reveal"><span class="pulse"></span> Available for opportunities</div>
-        <h1 class="reveal">
-          <span class="glitch" data-text="Victor Barbuta">Victor Barbuta</span><br>
-          <span class="grad" id="role" aria-hidden="true"></span>
-          <span class="sr-only">Cybersecurity Specialist</span>
-        </h1>
-        <p class="lead reveal">
-          I break systems to make them stronger — offensive security, threat detection,
-          and secure-by-design engineering. Turning vulnerabilities into resilience.
-        </p>
+        <div class="eyebrow reveal"><span class="live"></span> Cybersecurity · Red + Blue Team</div>
+        <h1 class="reveal">Victor<br>Barbuta</h1>
+        <div class="role reveal">Cybersecurity Specialist</div>
+        <p class="lead reveal">I break systems to make them stronger — offensive security, threat detection, and secure-by-design engineering. Turning vulnerabilities into resilience.</p>
         <div class="cta reveal">
-          <a href="#contact" class="btn btn-primary" data-magnetic data-cursor>Get in touch →</a>
-          <button type="button" class="btn btn-ghost" id="resumeBtn" data-magnetic data-cursor>⬇ Résumé</button>
-          <a href="#work" class="btn btn-ghost" data-magnetic data-cursor>View my work</a>
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="resume.pdf" class="btn btn-ghost" download>Download résumé</a>
         </div>
-        <div class="stat-strip reveal">
-          <div class="stat"><div class="n">Red<span style="color:var(--text-dim)">+</span>Blue</div><div class="l">Offense &amp; defense</div></div>
+        <div class="stats reveal">
+          <div class="stat"><div class="n">Red+Blue</div><div class="l">Offense &amp; defense</div></div>
+          <div class="stat"><div class="n"><span class="count" data-to="24">0</span>/7</div><div class="l">Always learning</div></div>
           <div class="stat"><div class="n">∞</div><div class="l">Curiosity</div></div>
-          <div class="stat"><div class="n">24/7</div><div class="l">Always learning</div></div>
         </div>
       </div>
-
-      <!-- PORTRAIT: drop photo.jpg in this folder to replace the placeholder -->
       <div class="portrait-stage reveal">
-        <div class="ring"></div>
-        <div class="portrait" id="tiltPortrait">
-          <div class="portrait-ph" aria-hidden="true">
-            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="bgg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#0f1a29"/><stop offset="1" stop-color="#080d13"/>
-                </linearGradient>
-                <linearGradient id="hoodg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#182636"/><stop offset="1" stop-color="#0a1017"/>
-                </linearGradient>
-                <radialGradient id="glowg" cx="0.5" cy="0.4" r="0.55">
-                  <stop offset="0" stop-color="#00e6a8" stop-opacity="0.28"/><stop offset="1" stop-color="#00e6a8" stop-opacity="0"/>
-                </radialGradient>
-                <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <rect width="400" height="500" fill="url(#bgg)"/>
-              <rect width="400" height="500" fill="url(#glowg)"/>
-              <!-- faint code streams -->
-              <g fill="#00e6a8" opacity="0.07" font-family="monospace" font-size="13" letter-spacing="1">
-                <text x="26" y="70">01001</text><text x="24" y="130">11010</text><text x="30" y="360">10110</text>
-                <text x="316" y="110">01101</text><text x="322" y="300">10011</text><text x="312" y="420">01010</text>
-              </g>
-              <!-- cloak / shoulders -->
-              <path d="M52,500 C64,388 118,352 200,352 C282,352 336,388 348,500 Z" fill="url(#hoodg)"/>
-              <!-- hood -->
-              <path d="M200,54 C112,54 92,168 118,272 C129,314 160,346 200,352 C240,346 271,314 282,272 C308,168 288,54 200,54 Z" fill="url(#hoodg)"/>
-              <path d="M200,54 C112,54 92,168 118,272 C129,314 160,346 200,352 C240,346 271,314 282,272 C308,168 288,54 200,54 Z" fill="none" stroke="#00e6a8" stroke-opacity="0.18" stroke-width="1.5"/>
-              <!-- face cavity -->
-              <ellipse cx="200" cy="214" rx="64" ry="86" fill="#04070b"/>
-              <ellipse cx="200" cy="220" rx="46" ry="64" fill="#0a1016"/>
-              <!-- eyes -->
-              <g fill="#00e6a8" filter="url(#soft)">
-                <rect x="166" y="204" width="24" height="8" rx="4"/><rect x="210" y="204" width="24" height="8" rx="4"/>
-              </g>
-              <g fill="#7dffdf">
-                <rect x="166" y="204" width="24" height="8" rx="4" opacity="0.9"/><rect x="210" y="204" width="24" height="8" rx="4" opacity="0.9"/>
-              </g>
-            </svg>
-          </div>
+        <div class="portrait-glow"></div>
+        <div class="portrait">
+          <div class="portrait-ph" aria-hidden="true">VB</div>
           <img class="portrait-img" src="photo.jpg" alt="Victor Barbuta" onload="this.classList.add('loaded')" />
         </div>
-        <div class="p-badge top"><span class="pulse"></span> Online</div>
-        <div class="p-badge bot">🔐 Security Specialist</div>
       </div>
     </div>
   </div>
-
-  <!-- ===================== MARQUEE ===================== -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>PENETRATION TESTING</span><span>THREAT HUNTING</span><span>REVERSE ENGINEERING</span><span>SIEM</span><span>OSINT</span><span>CRYPTOGRAPHY</span><span>INCIDENT RESPONSE</span><span>RED TEAM</span><span>BLUE TEAM</span>
-      <span>PENETRATION TESTING</span><span>THREAT HUNTING</span><span>REVERSE ENGINEERING</span><span>SIEM</span><span>OSINT</span><span>CRYPTOGRAPHY</span><span>INCIDENT RESPONSE</span><span>RED TEAM</span><span>BLUE TEAM</span>
-    </div>
-  </div>
-
-  <!-- ===================== SOC DASHBOARD (demo) ===================== -->
-  <section id="soc" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// live ops</div>
-      <h2>Security operations</h2>
-      <p>A simulated SOC view — the kind of monitoring I build and practice with. <span style="color:var(--text-dim)">(Demo data, generated in your browser.)</span></p>
-    </div>
-    <div class="soc-grid reveal">
-      <div class="soc-card"><div class="lbl">Threat level</div><div class="val ok" id="socThreat">LOW</div></div>
-      <div class="soc-card"><div class="lbl">Uptime</div><div class="val" id="socUptime">99.99%</div></div>
-      <div class="soc-card"><div class="lbl">Blocked today</div><div class="val" id="socBlocked">0</div></div>
-      <div class="soc-card"><div class="lbl">Active sensors</div><div class="val ok" id="socSensors">12</div></div>
-    </div>
-    <div class="soc-main reveal">
-      <div class="soc-radar"><canvas id="radar" width="240" height="240"></canvas></div>
-      <div class="soc-log" id="socLog"></div>
-    </div>
-  </section>
-
-  <!-- ===================== SERVICES ===================== -->
-  <section id="services" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// what I do</div>
-      <h2>Security, end to end</h2>
-      <p>From adversary simulation to hardening the defense — I cover the full offensive and defensive spectrum.</p>
-    </div>
-    <div class="grid-cards stagger">
-      <div class="card tilt-card"><span class="spot"></span><div class="ico">🎯</div><h3>Penetration Testing</h3><p>Web apps, networks, and APIs — I find the way in before attackers do, then document exactly how to close it.</p></div>
-      <div class="card tilt-card"><span class="spot"></span><div class="ico">🛡️</div><h3>Threat Detection &amp; Blue Team</h3><p>SIEM tuning, log analysis, and incident response — spotting the signal in the noise and shutting threats down fast.</p></div>
-      <div class="card tilt-card"><span class="spot"></span><div class="ico">🔐</div><h3>Secure Development</h3><p>Threat modeling and code review baked into the SDLC, so security is a foundation and not an afterthought.</p></div>
-      <div class="card tilt-card"><span class="spot"></span><div class="ico">🔎</div><h3>Vulnerability Research</h3><p>Digging into how software really works — reverse engineering, fuzzing, and responsible disclosure.</p></div>
-    </div>
-  </section>
 
   <!-- ===================== ABOUT ===================== -->
   <section id="about" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// about</div>
-      <h2>Who I am</h2>
-    </div>
     <div class="about-grid">
       <div class="reveal">
-        <p><strong>I'm Victor Barbuta</strong>, a cybersecurity practitioner driven by a simple belief: to defend a system, you have to think like the person attacking it.</p>
-        <p>My focus is offensive security and threat analysis, but I care just as much about the defensive side — because finding a flaw only matters if you can help fix it. I spend my time in labs, CTFs, and hands-on projects, sharpening skills across the whole security stack.</p>
-        <p>I'm early in an ambitious journey and I move fast: every box owned, every writeup published, and every certification earned is a step toward the specialist I'm building toward.</p>
-        <div class="facts">
-          <div class="fact"><div class="n"><span class="count" data-to="2007" data-plain>0</span></div><div class="l">Born 11 August · new-gen defender</div></div>
-          <div class="fact"><div class="n">CTF</div><div class="l">Active player &amp; learner</div></div>
-          <div class="fact"><div class="n">Red+Blue</div><div class="l">Full-spectrum mindset</div></div>
-          <div class="fact"><div class="n"><span class="count" data-to="100">0</span>%</div><div class="l">Committed to the craft</div></div>
-        </div>
+        <div class="kicker" style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">About</div>
+        <p class="lede" style="margin-top:14px;">To defend a system, you have to think like the person attacking it.</p>
+        <p class="body">I'm a cybersecurity practitioner focused on offensive security and threat analysis — but I care just as much about the defensive side, because finding a flaw only matters if you can help fix it.</p>
+        <p class="body">I'm early in an ambitious journey and I move fast: every box owned, every writeup published, and every certification earned is a step toward the specialist I'm building toward. Right now that means labs, CTFs, and hands-on projects across the whole security stack.</p>
       </div>
-      <div class="terminal reveal" id="tiltTerm">
-        <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">~/victor — zsh</span><span class="term-hint">try&nbsp;<b>help</b></span><button class="term-sound" id="termSound" title="Toggle typing sound" data-cursor>🔇</button></div>
-        <div class="term-body">
-          <div id="term"></div>
-          <div class="term-input-line" id="termLine" style="display:none">
-            <span class="term-prompt">victor@barbuta:~$</span>
-            <input id="termIn" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Interactive terminal — type a command" />
-          </div>
-        </div>
+      <div class="about-cards reveal">
+        <div class="card"><div class="ico">🎯</div><h3>Offensive</h3><p>Web, network &amp; AD attack paths — finding the way in before attackers do.</p></div>
+        <div class="card"><div class="ico">🛡️</div><h3>Defensive</h3><p>Detection, log analysis, and incident response that shuts threats down.</p></div>
+        <div class="card"><div class="ico">🔎</div><h3>Research</h3><p>Understanding how software really works — and how it breaks.</p></div>
+        <div class="card"><div class="ico">⚡</div><h3>Fast-moving</h3><p>Learning relentlessly and documenting the journey in public.</p></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERTISE ===================== -->
+  <section id="expertise" class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">What I do</div>
+      <h2>Security, end to end</h2>
+      <p>From adversary simulation to hardening the defense — I work across the full offensive and defensive spectrum.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ico">🎯</div><h3>Penetration Testing</h3><p>Web apps, networks, and APIs — I find the way in, then document exactly how to close it.</p></div>
+      <div class="card reveal"><div class="ico">🛡️</div><h3>Threat Detection</h3><p>SIEM tuning, log analysis, and incident response — signal from the noise, fast.</p></div>
+      <div class="card reveal"><div class="ico">🔐</div><h3>Secure Development</h3><p>Threat modeling and code review baked into the SDLC, so security is a foundation.</p></div>
+      <div class="card reveal"><div class="ico">🔎</div><h3>Vulnerability Research</h3><p>Reverse engineering, fuzzing, and responsible disclosure.</p></div>
     </div>
   </section>
 
   <!-- ===================== SKILLS ===================== -->
   <section id="skills" class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">// arsenal</div>
+      <div class="kicker">Arsenal</div>
       <h2>Skills &amp; tooling</h2>
-      <p>The techniques and tools I work with. This grows every week.</p>
+      <p>The techniques and tools I work with — and this grows every week.</p>
     </div>
-    <div class="skill-cols stagger">
-      <div class="skill-group"><h4><span class="b">▹</span> Offensive</h4><div class="chips"><span class="chip">Nmap</span><span class="chip">Burp Suite</span><span class="chip">Metasploit</span><span class="chip">Wireshark</span><span class="chip">SQLmap</span><span class="chip">Hydra</span><span class="chip">Web Exploitation</span><span class="chip">Privilege Escalation</span></div></div>
-      <div class="skill-group"><h4><span class="b">▹</span> Defensive</h4><div class="chips"><span class="chip">SIEM</span><span class="chip">Log Analysis</span><span class="chip">Incident Response</span><span class="chip">Threat Hunting</span><span class="chip">Hardening</span><span class="chip">Firewalls</span></div></div>
-      <div class="skill-group"><h4><span class="b">▹</span> Foundations</h4><div class="chips"><span class="chip">Linux</span><span class="chip">Networking / TCP-IP</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">Cryptography</span><span class="chip">Git</span></div></div>
-      <div class="skill-group"><h4><span class="b">▹</span> Platforms</h4><div class="chips"><span class="chip">TryHackMe</span><span class="chip">Hack The Box</span><span class="chip">OverTheWire</span><span class="chip">PortSwigger Labs</span></div></div>
-    </div>
-    <div class="skillbars reveal">
-      <div class="skillbar" data-lv="75"><div class="top"><span>Networking &amp; Linux</span><span class="lv">Proficient</span></div><div class="track"><div class="fill"></div></div></div>
-      <div class="skillbar" data-lv="70"><div class="top"><span>Scripting (Python / Bash)</span><span class="lv">Proficient</span></div><div class="track"><div class="fill"></div></div></div>
-      <div class="skillbar" data-lv="58"><div class="top"><span>Offensive Security</span><span class="lv">Building</span></div><div class="track"><div class="fill"></div></div></div>
-      <div class="skillbar" data-lv="48"><div class="top"><span>Blue Team / Detection</span><span class="lv">Learning</span></div><div class="track"><div class="fill"></div></div></div>
-    </div>
-  </section>
-
-  <!-- ===================== TOOLBOX ===================== -->
-  <section id="toolbox" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// try it yourself</div>
-      <h2>Security toolbox</h2>
-      <p>Interactive mini-tools — encode, hash, and test password strength. Everything runs locally in your browser; nothing is sent anywhere.</p>
-    </div>
-    <div class="tool-grid stagger">
-      <div class="tool">
-        <h3>🔁 Encoder / Decoder</h3>
-        <label for="encIn">Input</label>
-        <textarea id="encIn" placeholder="type here…"></textarea>
-        <div class="row">
-          <select id="encMode">
-            <option value="b64e">Base64 encode</option>
-            <option value="b64d">Base64 decode</option>
-            <option value="rot13">ROT13</option>
-            <option value="hexe">Text → Hex</option>
-            <option value="hexd">Hex → Text</option>
-          </select>
-          <button class="small-btn" id="encCopy" data-cursor>Copy</button>
-        </div>
-        <div class="out" id="encOut"></div>
-      </div>
-      <div class="tool">
-        <h3>#️⃣ SHA-256 Hasher</h3>
-        <label for="hashIn">Input</label>
-        <textarea id="hashIn" placeholder="type to hash in real time…"></textarea>
-        <div class="out" id="hashOut" style="margin-top:14px"></div>
-      </div>
-      <div class="tool">
-        <h3>🔑 Password Strength</h3>
-        <label for="pwIn">Test a password (stays in your browser)</label>
-        <input type="text" id="pwIn" placeholder="try a password…" autocomplete="off" />
-        <div class="pw-meter"><div class="pw-bar" id="pwBar"></div></div>
-        <div class="pw-label" id="pwLabel">—</div>
-      </div>
+    <div class="skill-groups">
+      <div class="skill-group reveal"><h4>Offensive</h4><div class="chips"><span class="chip">Nmap</span><span class="chip">Burp Suite</span><span class="chip">Metasploit</span><span class="chip">Wireshark</span><span class="chip">SQLmap</span><span class="chip">Privilege Escalation</span></div></div>
+      <div class="skill-group reveal"><h4>Defensive</h4><div class="chips"><span class="chip">SIEM</span><span class="chip">Log Analysis</span><span class="chip">Incident Response</span><span class="chip">Threat Hunting</span><span class="chip">Hardening</span></div></div>
+      <div class="skill-group reveal"><h4>Foundations</h4><div class="chips"><span class="chip">Linux</span><span class="chip">Networking</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">Cryptography</span><span class="chip">Git</span></div></div>
+      <div class="skill-group reveal"><h4>Platforms</h4><div class="chips"><span class="chip">TryHackMe</span><span class="chip">Hack The Box</span><span class="chip">OverTheWire</span><span class="chip">PortSwigger</span></div></div>
     </div>
   </section>
 
   <!-- ===================== WORK ===================== -->
   <section id="work" class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">// portfolio</div>
-      <h2>Projects &amp; writeups</h2>
-      <p>Selected hands-on work. Replace these with your real CTF writeups, labs, and tools as you build them.</p>
+      <div class="kicker">Portfolio</div>
+      <h2>Selected work</h2>
+      <p>Hands-on projects and writeups. Click any card to read the full breakdown.</p>
     </div>
-    <div class="filters reveal" id="projFilters">
+    <div class="filters reveal" id="filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="offensive">Offensive</button>
       <button class="filter-btn" data-filter="blue">Blue Team</button>
       <button class="filter-btn" data-filter="tools">Tools</button>
     </div>
-    <div class="grid-cards stagger" id="projGrid">
-      <div class="card proj tilt-card" data-cat="offensive" data-open="web-idor"><span class="spot"></span><div class="meta"><span class="badge">CTF</span><span class="badge">Web</span></div><h3>Web Exploitation Writeup</h3><p>Chaining an IDOR into full account takeover on a deliberately vulnerable app — recon, exploitation, and the fix.</p><div class="links"><a href="#" data-open="web-idor">Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="offensive" data-open="ad-path"><span class="spot"></span><div class="meta"><span class="badge">Active Directory</span><span class="badge">Lab</span></div><h3>AD Attack Path</h3><p>Walking an on-prem Active Directory from initial foothold to Domain Admin — Kerberoasting, lateral movement, and hardening notes.</p><div class="links"><a href="#" data-open="ad-path">Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="tools" data-open="portscanner"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Python</span></div><h3>Port Scanner (from scratch)</h3><p>A lightweight multithreaded port scanner built to understand how network reconnaissance really works under the hood.</p><div class="links"><a href="#" data-open="portscanner">Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="tools" data-open="recon-script"><span class="spot"></span><div class="meta"><span class="badge">Tool</span><span class="badge">Bash</span></div><h3>Recon Automation Script</h3><p>A one-command recon wrapper that chains subdomain enumeration, port scanning, and screenshotting for faster engagement kickoffs.</p><div class="links"><a href="#" data-open="recon-script">Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="blue" data-open="soc-lab"><span class="spot"></span><div class="meta"><span class="badge">Blue Team</span><span class="badge">SIEM</span></div><h3>Home SOC Lab</h3><p>A detection lab with log collection and alerting to practice spotting real-world attack patterns end to end.</p><div class="links"><a href="#" data-open="soc-lab">Read →</a></div></div>
-      <div class="card proj tilt-card" data-cat="blue" data-open="detection-rules"><span class="spot"></span><div class="meta"><span class="badge">Detection</span><span class="badge">Sigma</span></div><h3>Detection Rules Pack</h3><p>A set of Sigma rules for common attacker behaviour (suspicious PowerShell, brute force, persistence) mapped to MITRE ATT&amp;CK.</p><div class="links"><a href="#" data-open="detection-rules">Read →</a></div></div>
-    </div>
+    <div class="cards" id="projGrid"></div>
   </section>
 
-  <!-- ===================== BLOG / WRITEUPS ===================== -->
-  <section id="blog" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// writeups</div>
-      <h2>Latest writeups</h2>
-      <p>Notes from labs, CTFs, and things I'm learning. Click any card to read the full post.</p>
-    </div>
-    <div class="grid-cards stagger" id="blogGrid"></div>
-  </section>
-
-  <!-- ===================== GITHUB (live) ===================== -->
+  <!-- ===================== GITHUB ===================== -->
   <section id="github" class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">// live from github</div>
-      <h2>GitHub activity</h2>
-      <p>Pulled live from my profile — this updates automatically every time I push new work.</p>
+      <div class="kicker">Live from GitHub</div>
+      <h2>Open-source activity</h2>
+      <p>Pulled live from my profile — updates automatically as I push new work.</p>
     </div>
-    <div class="gh-stats reveal" id="ghStats">
+    <div class="gh-tiles reveal">
       <div class="gh-tile"><div class="n" id="ghRepos">–</div><div class="l">Public Repos</div></div>
       <div class="gh-tile"><div class="n" id="ghStars">–</div><div class="l">Total Stars</div></div>
       <div class="gh-tile"><div class="n" id="ghFollowers">–</div><div class="l">Followers</div></div>
       <div class="gh-tile"><div class="n" id="ghFollowing">–</div><div class="l">Following</div></div>
     </div>
-    <div class="gh-repos reveal" id="ghRepoList"><div class="gh-msg">Loading repositories…</div></div>
+    <div class="cards gh-repos reveal" id="ghRepoList"><div class="gh-msg">Loading repositories…</div></div>
   </section>
 
-  <!-- ===================== JOURNEY ===================== -->
-  <section id="journey" class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">// roadmap</div>
-      <h2>My journey</h2>
-      <p>Where I'm coming from and where I'm headed. Update the milestones as you hit them.</p>
-    </div>
-    <div class="timeline reveal">
-      <div class="tl-item"><div class="when">Now</div><h4>Foundations &amp; hands-on practice</h4><p>Grinding CTFs, building labs, and documenting everything I learn.</p></div>
-      <div class="tl-item"><div class="when">Next</div><h4>Certifications</h4><p>Targeting foundational certs (e.g. CompTIA Security+, then eJPT / practical offensive certs).</p></div>
-      <div class="tl-item"><div class="when">Goal</div><h4>Professional offensive security</h4><p>Contributing to real engagements, bug bounties, and the security community.</p></div>
-    </div>
-  </section>
-
-  <!-- ===================== CERTIFICATIONS ===================== -->
+  <!-- ===================== CERTS ===================== -->
   <section id="certs" class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">// credentials</div>
+      <div class="kicker">Credentials</div>
       <h2>Certifications</h2>
-      <p>Where I'm validating my skills. Statuses are honest — earned, in progress, or planned.</p>
+      <p>Where I'm validating my skills — statuses are honest.</p>
     </div>
-    <div class="grid-cards stagger">
-      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🛡️</span><span class="cert-status planned">Planned</span></div><h3>CompTIA Security+</h3><p>Industry-standard baseline across security concepts, threats, and architecture.</p></div>
-      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🎯</span><span class="cert-status planned">Planned</span></div><h3>eLearnSecurity eJPT</h3><p>Hands-on, entry-level penetration testing certification — fully practical.</p></div>
-      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">⚔️</span><span class="cert-status progress">In Progress</span></div><h3>TryHackMe / HTB Paths</h3><p>Working through offensive &amp; defensive learning paths and CTF rooms.</p></div>
-      <div class="card cert tilt-card"><span class="spot"></span><div class="cert-top"><span class="cert-ico">🌐</span><span class="cert-status progress">In Progress</span></div><h3>Networking Foundations</h3><p>TCP/IP, routing, and protocols — the groundwork every specialist needs.</p></div>
+    <div class="cards">
+      <div class="card reveal"><div class="cert-top"><span class="cert-ico">🛡️</span><span class="cert-status">Planned</span></div><h3>CompTIA Security+</h3><p>Industry-standard baseline across security concepts and architecture.</p></div>
+      <div class="card reveal"><div class="cert-top"><span class="cert-ico">🎯</span><span class="cert-status">Planned</span></div><h3>eLearnSecurity eJPT</h3><p>Hands-on, fully practical entry-level penetration testing cert.</p></div>
+      <div class="card reveal"><div class="cert-top"><span class="cert-ico">⚔️</span><span class="cert-status progress">In Progress</span></div><h3>TryHackMe / HTB</h3><p>Working through offensive &amp; defensive learning paths and CTF rooms.</p></div>
+      <div class="card reveal"><div class="cert-top"><span class="cert-ico">🌐</span><span class="cert-status progress">In Progress</span></div><h3>Networking Foundations</h3><p>TCP/IP, routing, and protocols — the groundwork every specialist needs.</p></div>
     </div>
   </section>
 
   <!-- ===================== CONTACT ===================== -->
   <section id="contact" class="wrap">
-    <div class="contact-box reveal">
+    <div class="sec-head reveal">
+      <div class="kicker">Contact</div>
+      <h2>Let's build something secure</h2>
+    </div>
+    <div class="contact-card reveal">
       <div class="contact-grid">
-        <!-- FORMSPREE: create a free form at formspree.io, then paste your form ID
-             into the action URL below (replace "your-form-id"). -->
+        <!-- FORMSPREE: create a free form at formspree.io, paste your form ID below. -->
         <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
-          <div class="form-field"><label for="cName">Name</label><input id="cName" name="name" type="text" placeholder="Jane Recruiter" required></div>
-          <div class="form-field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" placeholder="jane@company.com" required></div>
-          <div class="form-field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" placeholder="Hi Victor, we'd love to talk about…" required></textarea></div>
-          <button type="submit" class="btn btn-primary" data-magnetic data-cursor style="width:100%; justify-content:center;">Send message →</button>
+          <div class="field"><label for="cName">Name</label><input id="cName" name="name" type="text" placeholder="Jane Recruiter" required></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" placeholder="jane@company.com" required></div>
+          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" placeholder="Hi Victor, we'd love to talk about…" required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send message</button>
         </form>
         <div class="contact-side">
-          <h2>Let's <span class="grad">connect</span></h2>
-          <p>Open to internships, mentorship, collaboration on security projects, and CTF teams. Drop a message or reach me directly:</p>
-          <div class="socials" style="justify-content:flex-start">
-            <a class="social" href="mailto:your@email.com" data-magnetic data-cursor>✉ Email</a>
-            <a class="social" href="https://github.com/vicuvi1" target="_blank" rel="noopener" data-magnetic data-cursor>⌥ GitHub</a>
-            <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>in LinkedIn</a>
-            <a class="social" href="#" target="_blank" rel="noopener" data-magnetic data-cursor>⚑ TryHackMe</a>
+          <h3>Open to opportunities</h3>
+          <p>Internships, mentorship, collaboration on security projects, and CTF teams. Reach out anytime.</p>
+          <div class="socials">
+            <a class="social" href="mailto:your@email.com">✉ Email <span class="k">copy</span></a>
+            <a class="social" href="https://github.com/vicuvi1" target="_blank" rel="noopener">⌥ GitHub <span class="k">/vicuvi1</span></a>
+            <a class="social" href="#" target="_blank" rel="noopener">in LinkedIn <span class="k">add link</span></a>
+            <a class="social" href="#" target="_blank" rel="noopener">⚑ TryHackMe <span class="k">add link</span></a>
           </div>
         </div>
       </div>
@@ -827,17 +417,18 @@
 
   <footer>
     <div class="wrap">
-      <div class="brand">victor<span style="color:var(--accent)">@</span>barbuta:~$ <span style="opacity:.6">stay curious.</span></div>
-      <div style="margin-top:8px">© <span id="year"></span> Victor Barbuta · Built with care.</div>
+      <a href="#top" class="brand">Victor Barbuta<span class="dot">.</span></a>
+      <div>© <span id="year"></span> · Built with intent.</div>
     </div>
   </footer>
 
+  <div class="toast" id="toast" style="position:fixed;bottom:26px;left:50%;z-index:120;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--bg-2);border:1px solid var(--accent);color:var(--text);padding:13px 22px;border-radius:13px;font-size:14px;transition:opacity .3s,transform .3s;box-shadow:0 16px 40px -14px rgba(0,0,0,.6);"></div>
+
   <script>
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hoverCapable = matchMedia('(hover: hover)').matches;
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ---- theme ---- */
+    /* theme */
     const root = document.documentElement, themeBtn = document.getElementById('theme');
     const saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved);
     themeBtn.addEventListener('click', () => {
@@ -845,854 +436,162 @@
       root.setAttribute('data-theme', next); localStorage.setItem('theme', next);
     });
 
-    /* ---- mobile menu ---- */
+    /* mobile menu */
     const burger = document.getElementById('burger'), navlinks = document.getElementById('navlinks');
     burger.addEventListener('click', () => navlinks.classList.toggle('open'));
     navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
 
-    /* ---- scroll progress (rAF-batched, no layout thrash) ---- */
-    const progress = document.getElementById('progress');
-    let ticking = false;
-    addEventListener('scroll', () => {
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(() => {
-        const h = document.documentElement, max = h.scrollHeight - h.clientHeight;
-        progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
-        ticking = false;
-      });
-    }, { passive: true });
+    /* toast */
+    const toastEl = document.getElementById('toast'); let toastT;
+    function toast(msg) { toastEl.textContent = msg; toastEl.style.opacity = '1'; toastEl.style.transform = 'translate(-50%,0)';
+      clearTimeout(toastT); toastT = setTimeout(() => { toastEl.style.opacity = '0'; toastEl.style.transform = 'translate(-50%,20px)'; }, 2200); }
 
-    /* ---- reveal + stagger ---- */
-    const io = new IntersectionObserver((es) => es.forEach(e => {
+    /* reveal on scroll */
+    const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = Math.min(i % 6, 5) * 60 + 'ms'; io.observe(el); });
+
+    /* counters */
+    new IntersectionObserver((es, ob) => es.forEach(e => {
       if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      if (e.target.classList.contains('stagger'))
-        [...e.target.children].forEach((c, i) => c.style.transitionDelay = (i * 80) + 'ms');
-      io.unobserve(e.target);
-    }), { threshold: 0.12 });
-    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+      const el = e.target, to = +el.dataset.to; let s = null;
+      const step = t => { if (!s) s = t; const p = Math.min((t - s) / 1200, 1); el.textContent = Math.floor(p * to); if (p < 1) requestAnimationFrame(step); else el.textContent = to; };
+      requestAnimationFrame(step); ob.unobserve(el);
+    }), { threshold: .5 }).observe(document.querySelector('.count'));
 
-    /* ---- counters ---- */
-    const cio = new IntersectionObserver((es) => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target, to = +el.dataset.to, plain = el.hasAttribute('data-plain');
-      let start = null, dur = 1400;
-      const step = (t) => {
-        if (!start) start = t;
-        const p = Math.min((t - start) / dur, 1), val = Math.floor(p * to);
-        el.textContent = plain ? val : val.toLocaleString();
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = plain ? to : to.toLocaleString();
-      };
-      requestAnimationFrame(step); cio.unobserve(el);
-    }), { threshold: 0.5 });
-    document.querySelectorAll('.count').forEach(el => cio.observe(el));
-
-    /* ---- reusable scramble helper ---- */
-    const glyphs = '!<>-_\\/[]{}—=+*^?#01ABCDEF';
-    function scrambleTo(el, text, speed, done) {
-      let frame = 0;
-      (function step() {
-        let out = '';
-        for (let i = 0; i < text.length; i++) {
-          if (i < frame / 2) out += text[i];
-          else if (text[i] === ' ') out += ' ';
-          else out += glyphs[Math.floor(Math.random() * glyphs.length)];
-        }
-        el.textContent = out; frame++;
-        if (frame / 2 <= text.length) setTimeout(step, speed);
-        else { el.textContent = text; if (done) done(); }
-      })();
-    }
-
-    /* ---- rotating roles in hero ---- */
-    const roleEl = document.getElementById('role');
-    const roles = ['Cybersecurity Specialist', 'Penetration Tester', 'Threat Hunter', 'Security Researcher', 'Red + Blue Team'];
-    if (reduce) { roleEl.textContent = roles[0]; }
-    else {
-      let ri = 0;
-      (function cycle() { scrambleTo(roleEl, roles[ri], 45, () => { ri = (ri + 1) % roles.length; setTimeout(cycle, 1900); }); })();
-    }
-
-    /* ============ SMOOTH POINTER LAYER ============
-       One pointermove writes coords; a single rAF loop does all DOM writes.
-       Rects are cached on enter, so the hot path never reads layout. */
-    if (false) { /* restraint pass: custom cursor / magnetic / tilt disabled for a calmer, native feel */
-      const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
-      let px = innerWidth/2, py = innerHeight/2;   // pointer
-      let rxx = px, ryy = py;                       // ring (eased)
-
-      // magnetic + tilt element registries with cached rects
-      const magnets = [...document.querySelectorAll('[data-magnetic]')].map(el => ({ el, r:null, tx:0, ty:0 }));
-      const tilts = [...document.querySelectorAll('.tilt-card, #tiltPortrait')].map(el => ({ el, r:null, active:false }));
-
-      const refresh = (o) => o.r = o.el.getBoundingClientRect();
-      magnets.forEach(o => { o.el.addEventListener('pointerenter', () => refresh(o));
-        o.el.addEventListener('pointerleave', () => { o.tx = o.ty = 0; o.el.style.transform = ''; }); });
-      tilts.forEach(o => { o.el.addEventListener('pointerenter', () => { refresh(o); o.active = true; });
-        o.el.addEventListener('pointerleave', () => { o.active = false; o.el.style.transform = ''; }); });
-
-      addEventListener('scroll', () => { magnets.forEach(o => o.r = null); tilts.forEach(o => o.r = null); }, { passive:true });
-
-      addEventListener('pointermove', (e) => { px = e.clientX; py = e.clientY; }, { passive:true });
-
-      // cursor ring hover state
-      document.querySelectorAll('a, button, [data-cursor], [data-magnetic], .chip').forEach(el => {
-        el.addEventListener('pointerenter', () => ring.classList.add('hover'));
-        el.addEventListener('pointerleave', () => ring.classList.remove('hover'));
-      });
-
-      (function frame() {
-        // dot: instant, ring: eased — both GPU transforms
-        dot.style.transform = `translate3d(${px}px,${py}px,0)`;
-        rxx += (px - rxx) * 0.2; ryy += (py - ryy) * 0.2;
-        ring.style.transform = `translate3d(${rxx}px,${ryy}px,0)`;
-
-        for (const o of magnets) {
-          if (!o.r) continue;
-          const cx = o.r.left + o.r.width/2, cy = o.r.top + o.r.height/2;
-          const inside = px>o.r.left-40 && px<o.r.right+40 && py>o.r.top-40 && py<o.r.bottom+40;
-          const gx = inside ? (px - cx) * 0.28 : 0, gy = inside ? (py - cy) * 0.4 : 0;
-          o.tx += (gx - o.tx) * 0.2; o.ty += (gy - o.ty) * 0.2;
-          o.el.style.transform = `translate3d(${o.tx.toFixed(2)}px,${o.ty.toFixed(2)}px,0)`;
-        }
-        for (const o of tilts) {
-          if (!o.active) continue;
-          if (!o.r) refresh(o);
-          const nx = (px - o.r.left) / o.r.width, ny = (py - o.r.top) / o.r.height;
-          o.el.style.transform = `perspective(900px) rotateY(${((nx-0.5)*7).toFixed(2)}deg) rotateX(${((0.5-ny)*7).toFixed(2)}deg) translateY(-4px)`;
-          const spot = o.el.querySelector('.spot');
-          if (spot) { spot.style.left = (px - o.r.left)+'px'; spot.style.top = (py - o.r.top)+'px'; }
-        }
-        requestAnimationFrame(frame);
-      })();
-    }
-
-    /* ================= TOAST ================= */
-    const toastEl = document.getElementById('toast');
-    let toastT;
-    function toast(msg) {
-      toastEl.textContent = msg; toastEl.classList.add('show');
-      clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('show'), 2200);
-    }
-
-    /* ================= MATRIX RAIN ================= */
-    const matrixCanvas = document.getElementById('matrix');
-    let matrixRAF = null;
-    function matrixStart() {
-      const ctx = matrixCanvas.getContext('2d');
-      const resize = () => { matrixCanvas.width = innerWidth; matrixCanvas.height = innerHeight; };
-      resize(); addEventListener('resize', resize);
-      matrixCanvas.classList.add('on');
-      const chars = 'アカサタナハマヤラワ0123456789ABCDEF<>#$%&*'.split('');
-      const font = 16, cols = Math.floor(innerWidth / font);
-      const drops = Array(cols).fill(1);
-      (function rain() {
-        ctx.fillStyle = 'rgba(0,0,0,0.06)'; ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-        ctx.fillStyle = '#00ff9c'; ctx.font = font + 'px monospace';
-        for (let i = 0; i < drops.length; i++) {
-          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * font, drops[i] * font);
-          if (drops[i] * font > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
-          drops[i]++;
-        }
-        matrixRAF = requestAnimationFrame(rain);
-      })();
-    }
-    function matrixStop() {
-      if (matrixRAF) cancelAnimationFrame(matrixRAF); matrixRAF = null;
-      matrixCanvas.classList.remove('on');
-      matrixCanvas.getContext('2d').clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-    }
-    function matrixToggle() { matrixRAF ? matrixStop() : matrixStart(); }
-    matrixCanvas.addEventListener('click', matrixStop);
-    addEventListener('keydown', e => { if (e.key === 'Escape' && matrixRAF) matrixStop(); });
-
-    /* ================= INTERACTIVE TERMINAL ================= */
-    const term = document.getElementById('term');
-    const termLine = document.getElementById('termLine');
-    const termIn = document.getElementById('termIn');
-    const termBody = document.querySelector('#tiltTerm .term-body');
-    const esc = s => s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
-    function print(html) { const d = document.createElement('div'); d.className = 'line'; d.innerHTML = html; term.appendChild(d); term.scrollTop = term.scrollHeight; }
-
-    const bannerArt =
-      "<span class='ok'>" +
-      " __     ___      _\n" +
-      " \\ \\   / (_) ___| |_ ___  _ __\n" +
-      "  \\ \\ / /| |/ __| __/ _ \\| '__|\n" +
-      "   \\ V / | | (__| || (_) | |\n" +
-      "    \\_/  |_|\\___|\\__\\___/|_|\n" +
-      "</span><span class='dim'>Cybersecurity Specialist · red + blue team</span>";
-
-    const commands = {
-      help: () =>
-        "Available commands:\n" +
-        "  <span class='ok'>whoami</span>    who I am\n" +
-        "  <span class='ok'>about</span>     short bio\n" +
-        "  <span class='ok'>skills</span>    tools & techniques\n" +
-        "  <span class='ok'>projects</span>  what I've built\n" +
-        "  <span class='ok'>contact</span>   how to reach me\n" +
-        "  <span class='ok'>ls</span>        list files\n" +
-        "  <span class='ok'>cat</span> &lt;file&gt; read a file\n" +
-        "  <span class='ok'>banner</span>    ASCII banner\n" +
-        "  <span class='ok'>theme</span>     toggle light/dark\n" +
-        "  <span class='ok'>matrix</span>    enter the matrix\n" +
-        "  <span class='ok'>clear</span>     clear the screen\n" +
-        "<span class='dim'>psst… some commands are hidden. try 'sudo' 🙂</span>",
-      whoami: () => "Victor Barbuta — cybersecurity specialist. I break systems to make them stronger.",
-      about: () => "Early-career, fast-moving security practitioner. Offensive + defensive.\nAlways in a lab, a CTF, or a writeup. Born 11 Aug 2007.",
-      skills: () =>
-        "<span class='ok'>offensive</span>  nmap · burp · metasploit · sqlmap · wireshark\n" +
-        "<span class='ok'>defensive</span>  siem · log analysis · threat hunting · IR\n" +
-        "<span class='ok'>base</span>       linux · python · bash · networking · crypto",
-      projects: () =>
-        "1. Web Exploitation Writeup  <span class='dim'>[CTF · Web]</span>\n" +
-        "2. Port Scanner (from scratch) <span class='dim'>[Python]</span>\n" +
-        "3. Home SOC Lab <span class='dim'>[Blue Team · SIEM]</span>\n" +
-        "<span class='dim'>→ scroll up to the Work section for details</span>",
-      work: () => commands.projects(),
-      contact: () =>
-        "email     <span class='ok'>your@email.com</span>\n" +
-        "github    <span class='ok'>github.com/vicuvi1</span>\n" +
-        "linkedin  <span class='ok'>/in/your-handle</span>\n" +
-        "<span class='dim'>(update these in index.html)</span>",
-      social: () => commands.contact(),
-      ls: () => "<span class='ok'>about.txt  skills.txt  projects/  contact.txt</span>  <span class='dim'>flag.txt</span>",
-      cat: (a) => {
-        const f = (a[0] || '').toLowerCase();
-        if (!f) return "<span class='err'>usage: cat &lt;file&gt;</span>";
-        if (f === 'about.txt') return commands.about();
-        if (f === 'skills.txt') return commands.skills();
-        if (f === 'contact.txt') return commands.contact();
-        if (f === 'flag.txt') return "<span class='ok'>flag{stay_curious_and_keep_hacking}</span> 🚩\n<span class='dim'>nice — you found it. that's the mindset.</span>";
-        return "<span class='err'>cat: " + esc(f) + ": No such file</span>";
-      },
-      echo: (a) => esc(a.join(' ')),
-      banner: () => bannerArt,
-      date: () => new Date().toString(),
-      theme: () => { themeBtn.click(); return "<span class='dim'>theme toggled.</span>"; },
-      matrix: () => { matrixStart(); return "<span class='ok'>entering the matrix…</span> <span class='dim'>(ESC to exit)</span>"; },
-      sudo: () => "<span class='err'>[sudo]</span> nice try 😏 you don't have root here.\n<span class='dim'>hint: some secrets are just a 'cat flag.txt' away.</span>",
-      history: () => history.length ? history.map((h, i) => "  " + (i + 1) + "  " + esc(h)).join('\n') : "<span class='dim'>no history yet</span>",
-      clear: () => { term.innerHTML = ''; return null; },
-    };
-
-    const history = []; let histIdx = 0;
-    function runCommand(raw) {
-      const input = raw.trim();
-      print("<span class='term-prompt'>victor@barbuta:~$</span> <span class='cmd'>" + esc(raw) + "</span>");
-      if (!input) return;
-      history.push(input); histIdx = history.length;
-      const [cmd, ...args] = input.split(/\s+/);
-      const fn = commands[cmd.toLowerCase()];
-      if (fn) { const out = fn(args); if (out) print(out); }
-      else print("<span class='err'>command not found: " + esc(cmd) + "</span> — type <span class='ok'>help</span>");
-    }
-
-    termIn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') { runCommand(termIn.value); termIn.value = ''; }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); if (histIdx > 0) termIn.value = history[--histIdx] || ''; }
-      else if (e.key === 'ArrowDown') { e.preventDefault(); if (histIdx < history.length) termIn.value = history[++histIdx] || ''; }
-      else if (e.key === 'l' && e.ctrlKey) { e.preventDefault(); term.innerHTML = ''; }
-    });
-    termBody.addEventListener('click', () => { if (getSelection().toString() === '') termIn.focus(); });
-
-    // intro types out, then hands control to the visitor
-    const introLines = [
-      "<span class='p' style='color:var(--accent)'>victor@barbuta</span>:<span class='c' style='color:#7dd3fc'>~</span>$ whoami",
-      "<span class='dim'>cybersecurity specialist · red + blue team</span>",
-      "<span class='p' style='color:var(--accent)'>victor@barbuta</span>:<span class='c' style='color:#7dd3fc'>~</span>$ ./welcome.sh",
-      "<span class='dim'>[+] this terminal is live — type</span> <span class='ok'>help</span> <span class='dim'>and hit enter</span>",
-    ];
-    let started = false;
-    function startTerm() {
-      if (started) return; started = true;
-      if (reduce) { introLines.forEach(t => print(t)); termLine.style.display = 'flex'; return; }
-      let li = 0, ci = 0;
-      (function type() {
-        if (li >= introLines.length) { termLine.style.display = 'flex'; return; }
-        let el = term.querySelector('.line[data-i="' + li + '"]');
-        if (!el) { el = document.createElement('div'); el.className = 'line'; el.dataset.i = li; term.appendChild(el); }
-        const tmp = document.createElement('div'); tmp.innerHTML = introLines[li];
-        const plain = tmp.textContent;
-        el.textContent = plain.slice(0, ci); ci++;
-        term.scrollTop = term.scrollHeight;
-        if (ci <= plain.length) setTimeout(type, 18);
-        else { el.innerHTML = introLines[li]; li++; ci = 0; setTimeout(type, 260); }
-      })();
-    }
-    new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { startTerm(); ob.disconnect(); } }), { threshold: 0.3 })
-      .observe(document.getElementById('tiltTerm'));
-
-    /* ================= KONAMI CODE → MATRIX ================= */
-    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let ki = 0;
-    addEventListener('keydown', (e) => {
-      const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-      ki = (k === konami[ki]) ? ki + 1 : (k === konami[0] ? 1 : 0);
-      if (ki === konami.length) { ki = 0; matrixToggle(); achievement('Konami Master'); toast('🕹️ Konami unlocked — matrix mode'); }
-    });
-
-    /* ================= COPY EMAIL ================= */
-    document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const addr = a.getAttribute('href').replace('mailto:', '');
-        if (navigator.clipboard) { e.preventDefault(); navigator.clipboard.writeText(addr).then(() => toast('📋 Email copied: ' + addr)); }
-      });
-    });
-
-    /* ================= DEV-CONSOLE MESSAGE ================= */
-    console.log('%cVictor Barbuta', 'color:#00e6a8;font-size:28px;font-weight:bold;');
-    console.log('%cInspecting the source? Good — that\'s the security mindset. 🔍', 'color:#8b98a9;font-size:13px;');
-    console.log('%cflag{you_read_the_console}', 'color:#00e6a8;font-family:monospace;font-size:14px;');
-    console.log('%cLike what you see? Let\'s talk → your@email.com', 'color:#3b82f6;font-size:13px;');
-
-    /* ================= PROJECT FILTER TABS ================= */
-    const projFilters = document.getElementById('projFilters');
-    if (projFilters) {
-      const cards = [...document.querySelectorAll('#projGrid .card')];
-      projFilters.addEventListener('click', (e) => {
-        const btn = e.target.closest('.filter-btn'); if (!btn) return;
-        projFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        cards.forEach(c => {
-          const show = f === 'all' || (c.dataset.cat || '').split(' ').includes(f);
-          c.classList.toggle('hide', !show);
-          if (show) { c.classList.remove('filtering'); void c.offsetWidth; c.classList.add('filtering'); }
-        });
-      });
-    }
-
-    /* ================= LIVE GITHUB WIDGET ================= */
-    (function ghLoad() {
-      const user = 'vicuvi1';
-      const list = document.getElementById('ghRepoList');
-      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-      const langColor = { JavaScript:'#f1e05a', TypeScript:'#3178c6', Python:'#3572A5', HTML:'#e34c26', CSS:'#563d7c',
-        'C++':'#f34b7d', C:'#555555', 'C#':'#178600', Shell:'#89e051', Go:'#00ADD8', Java:'#b07219', PHP:'#4F5D95',
-        Ruby:'#701516', Rust:'#dea584', Dockerfile:'#384d54', PowerShell:'#012456' };
-
-      fetch(`https://api.github.com/users/${user}`)
-        .then(r => { if (!r.ok) throw 0; return r.json(); })
-        .then(u => { set('ghRepos', u.public_repos); set('ghFollowers', u.followers); set('ghFollowing', u.following); })
-        .catch(() => {});
-
-      fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=100`)
-        .then(r => { if (!r.ok) throw 0; return r.json(); })
-        .then(repos => {
-          if (!Array.isArray(repos)) throw 0;
-          set('ghStars', repos.reduce((s, r) => s + r.stargazers_count, 0));
-          const top = repos.filter(r => !r.fork)
-            .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)))
-            .slice(0, 6);
-          if (!top.length) { list.innerHTML = "<div class='gh-msg'>No public repositories yet — new work is on the way. 🚧</div>"; return; }
-          list.innerHTML = top.map(r => `
-            <a class="gh-repo" href="${r.html_url}" target="_blank" rel="noopener">
-              <div class="name">▹ ${esc(r.name)}</div>
-              <div class="desc">${r.description ? esc(r.description) : '<span style="opacity:.55">No description</span>'}</div>
-              <div class="foot">
-                ${r.language ? `<span class="gh-lang"><span class="gh-dot" style="background:${langColor[r.language] || '#8b98a9'}"></span>${esc(r.language)}</span>` : ''}
-                <span>★ ${r.stargazers_count}</span><span>⑂ ${r.forks_count}</span>
-              </div>
-            </a>`).join('');
-        })
-        .catch(() => {
-          list.innerHTML = `<div class='gh-msg'>Couldn't load repos right now (GitHub rate limit or offline). Visit <a href='https://github.com/${user}' target='_blank' style='color:var(--accent)'>github.com/${user}</a>.</div>`;
-        });
-    })();
-
-    /* ================= PRELOADER / BOOT ================= */
-    (function boot() {
-      const pre = document.getElementById('preloader');
-      if (!pre) return;
-      const finish = () => { pre.classList.add('done'); setTimeout(() => pre.remove(), 600); };
-      if (reduce || sessionStorage.getItem('booted')) { pre.remove(); return; }
-      sessionStorage.setItem('booted', '1');
-      const log = document.getElementById('bootLog');
-      const steps = [
-        '[  OK  ] Establishing encrypted session',
-        '[ DONE ] Welcome, Victor Barbuta.',
-      ];
-      let i = 0;
-      (function next() {
-        if (i >= steps.length) { setTimeout(finish, 280); return; }
-        log.textContent += steps[i++] + '\n';
-        setTimeout(next, 170);
-      })();
-      setTimeout(finish, 1800); // safety: never trap the visitor
-    })();
-
-    /* ================= SCROLL-SPY NAV ================= */
+    /* scroll-spy */
     const navA = [...document.querySelectorAll('.nav-links a')];
     const spy = new IntersectionObserver((es) => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      const id = e.target.getAttribute('id');
+      if (!e.isIntersecting) return; const id = e.target.getAttribute('id');
       navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
     }), { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
 
-    /* ================= BACK TO TOP ================= */
+    /* back to top */
     const toTop = document.getElementById('toTop');
     addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > 600), { passive: true });
     toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* ================= COMMAND PALETTE ================= */
-    const palette = document.getElementById('palette');
-    const paletteIn = document.getElementById('paletteIn');
-    const paletteList = document.getElementById('paletteList');
-    const go = (sel) => { const el = document.querySelector(sel); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
-    const actions = [
-      { label: 'Go to About', hint: 'section', run: () => go('#about') },
-      { label: 'Go to Services', hint: 'section', run: () => go('#services') },
-      { label: 'Go to Skills', hint: 'section', run: () => go('#skills') },
-      { label: 'Go to Projects', hint: 'section', run: () => go('#work') },
-      { label: 'Go to GitHub activity', hint: 'section', run: () => go('#github') },
-      { label: 'Go to Certifications', hint: 'section', run: () => go('#certs') },
-      { label: 'Go to Journey', hint: 'section', run: () => go('#journey') },
-      { label: 'Go to Contact', hint: 'section', run: () => go('#contact') },
-      { label: 'Toggle light / dark theme', hint: 'action', run: () => themeBtn.click() },
-      { label: 'Download résumé', hint: 'action', run: () => { const a = document.createElement('a'); a.href = 'resume.pdf'; a.download = ''; a.click(); } },
-      { label: 'Copy email address', hint: 'action', run: () => { if (navigator.clipboard) navigator.clipboard.writeText('your@email.com').then(() => toast('📋 Email copied')); } },
-      { label: 'Enter the Matrix', hint: 'easter egg', run: () => matrixStart() },
-      { label: 'Open GitHub profile', hint: 'external', run: () => open('https://github.com/vicuvi1', '_blank') },
-    ];
-    let pSel = 0, pFiltered = actions.slice();
-    function renderPalette() {
-      paletteList.innerHTML = pFiltered.length
-        ? pFiltered.map((a, i) => `<div class="p-item ${i === pSel ? 'sel' : ''}" data-i="${i}"><span>${esc(a.label)}</span><span class="p-hint">${a.hint}</span></div>`).join('')
-        : '<div class="p-empty">No matches</div>';
-    }
-    function openPalette() { palette.classList.add('open'); paletteIn.value = ''; pFiltered = actions.slice(); pSel = 0; renderPalette(); setTimeout(() => paletteIn.focus(), 30); }
-    function closePalette() { palette.classList.remove('open'); }
-    function runSel() { const a = pFiltered[pSel]; if (a) { closePalette(); setTimeout(a.run, 120); } }
-    paletteIn.addEventListener('input', () => {
-      const q = paletteIn.value.toLowerCase();
-      pFiltered = actions.filter(a => a.label.toLowerCase().includes(q) || a.hint.includes(q));
-      pSel = 0; renderPalette();
-    });
-    paletteIn.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown') { e.preventDefault(); pSel = Math.min(pSel + 1, pFiltered.length - 1); renderPalette(); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); pSel = Math.max(pSel - 1, 0); renderPalette(); }
-      else if (e.key === 'Enter') { e.preventDefault(); runSel(); }
-      else if (e.key === 'Escape') { closePalette(); }
-    });
-    paletteList.addEventListener('click', (e) => { const it = e.target.closest('.p-item'); if (it) { pSel = +it.dataset.i; runSel(); } });
-    palette.addEventListener('click', (e) => { if (e.target === palette) closePalette(); });
-    document.getElementById('paletteBtn').addEventListener('click', openPalette);
-    addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.classList.contains('open') ? closePalette() : openPalette(); }
-      else if (e.key === '/' && !/^(input|textarea)$/i.test(document.activeElement.tagName) && !palette.classList.contains('open')) { e.preventDefault(); openPalette(); }
-    });
-
-    /* ================= CONTACT FORM (Formspree AJAX) ================= */
-    const cf = document.getElementById('contactForm');
-    if (cf) {
-      cf.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (cf.action.includes('your-form-id')) { toast('⚙ Add your Formspree form ID first (see README)'); return; }
-        const btn = cf.querySelector('button[type=submit]'); const label = btn.textContent;
-        btn.textContent = 'Sending…'; btn.disabled = true;
-        try {
-          const res = await fetch(cf.action, { method: 'POST', body: new FormData(cf), headers: { Accept: 'application/json' } });
-          if (res.ok) { cf.reset(); toast('✅ Message sent — thanks, I\'ll reply soon!'); }
-          else toast('❌ Something went wrong — try emailing me directly.');
-        } catch { toast('❌ Network error — try emailing me directly.'); }
-        btn.textContent = label; btn.disabled = false;
-      });
-    }
-
-    /* ================= ACHIEVEMENTS ================= */
-    const unlocked = new Set();
-    function achievement(name) { if (unlocked.has(name)) return; unlocked.add(name); toast('🏆 Achievement unlocked: ' + name); }
-
-    /* ================= CONFETTI ================= */
-    function confetti() {
-      const c = document.createElement('canvas');
-      c.style.cssText = 'position:fixed;inset:0;z-index:9999;pointer-events:none';
-      c.width = innerWidth; c.height = innerHeight; document.body.appendChild(c);
-      const x = c.getContext('2d'), cols = ['#00e6a8', '#3b82f6', '#a855f7', '#ffbd2e', '#ff5470'];
-      const P = Array.from({ length: 150 }, () => ({ x: Math.random() * c.width, y: -20 - Math.random() * c.height, vy: 2 + Math.random() * 4, vx: -2 + Math.random() * 4, s: 4 + Math.random() * 7, col: cols[Math.floor(Math.random() * cols.length)], r: Math.random() * 6 }));
-      let f = 0;
-      (function draw() {
-        x.clearRect(0, 0, c.width, c.height);
-        for (const p of P) { p.x += p.vx; p.y += p.vy; p.r += 0.1; x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.col; x.fillRect(-p.s / 2, -p.s / 2, p.s, p.s); x.restore(); }
-        if (++f < 170) requestAnimationFrame(draw); else c.remove();
-      })();
-    }
-
-    /* ================= CURSOR TRAIL (disabled in restraint pass) ================= */
-    if (false) {
-      let last = 0;
-      addEventListener('pointermove', (e) => {
-        const now = performance.now(); if (now - last < 45) return; last = now;
-        const d = document.createElement('div'); d.className = 'trail';
-        d.style.left = e.clientX + 'px'; d.style.top = e.clientY + 'px';
-        document.body.appendChild(d);
-        requestAnimationFrame(() => { d.style.transition = 'opacity .5s, transform .5s'; d.style.opacity = '0'; d.style.transform = 'translate(-50%,-50%) scale(.2)'; });
-        setTimeout(() => d.remove(), 520);
-      }, { passive: true });
-    }
-
-    /* ================= SOUND ================= */
-    let soundOn = false, actx = null;
-    function toggleSound() {
-      soundOn = !soundOn;
-      const b = document.getElementById('termSound'); if (b) b.textContent = soundOn ? '🔈' : '🔇';
-      if (soundOn && !actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
-      toast(soundOn ? '🔈 Typing sound on' : '🔇 Typing sound off');
-    }
-    function beep() {
-      if (!soundOn || !actx) return;
-      try { const o = actx.createOscillator(), g = actx.createGain(); o.type = 'square'; o.frequency.value = 480 + Math.random() * 120; g.gain.value = 0.025; o.connect(g); g.connect(actx.destination); o.start(); o.stop(actx.currentTime + 0.03); } catch (e) {}
-    }
-    const termSoundBtn = document.getElementById('termSound');
-    if (termSoundBtn) termSoundBtn.addEventListener('click', toggleSound);
-    termIn.addEventListener('keydown', beep);
-
-    /* ================= CRT MODE ================= */
-    function crtToggle() { document.body.classList.toggle('crt'); }
-
-    /* ================= RÉSUMÉ MODAL ================= */
-    const resumeModal = document.getElementById('resumeModal'), resumeFrame = document.getElementById('resumeFrame');
-    function openResume() { resumeFrame.src = 'resume.pdf'; resumeModal.classList.add('open'); }
-    function closeResume() { resumeModal.classList.remove('open'); resumeFrame.src = 'about:blank'; }
-    const resumeBtn = document.getElementById('resumeBtn'); if (resumeBtn) resumeBtn.addEventListener('click', openResume);
-    document.getElementById('resumeClose').addEventListener('click', closeResume);
-    resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) closeResume(); });
-    addEventListener('keydown', (e) => { if (e.key === 'Escape') closeResume(); });
-
-    /* ================= MODAL ACCESSIBILITY (focus trap + restore + aria) ================= */
-    let lastFocusedEl = null;
-    const anyModalOpen = () => document.querySelector('.modal.open, .palette.open');
-    // remember what opened the modal, so we can return focus there on close
-    document.addEventListener('pointerdown', (e) => {
-      if (!anyModalOpen()) { const t = e.target.closest('a,button,[data-open]'); if (t) lastFocusedEl = t; }
-    }, true);
-    // trap Tab within the open modal
-    addEventListener('keydown', (e) => {
-      const m = anyModalOpen(); if (!m || e.key !== 'Tab') return;
-      const f = [...m.querySelectorAll('a[href],button,input,textarea,select,[tabindex]:not([tabindex="-1"])')]
-        .filter(el => !el.disabled && el.offsetParent !== null);
-      if (!f.length) return;
-      const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    });
-    // on open: move focus in + mark visible to SR; on close: restore focus
-    ['resumeModal', 'detailModal', 'palette'].forEach(id => {
-      const el = document.getElementById(id); if (!el) return;
-      new MutationObserver(() => {
-        const open = el.classList.contains('open');
-        el.setAttribute('aria-hidden', open ? 'false' : 'true');
-        if (open) { const f = el.querySelector('input,button,a[href]'); if (f) setTimeout(() => f.focus(), 40); }
-        else if (lastFocusedEl && lastFocusedEl.focus) { lastFocusedEl.focus(); lastFocusedEl = null; }
-      }).observe(el, { attributes: true, attributeFilter: ['class'] });
-    });
-
-    /* ================= SECURITY TOOLBOX ================= */
-    (function toolbox() {
-      const encIn = document.getElementById('encIn'); if (!encIn) return;
-      const encMode = document.getElementById('encMode'), encOut = document.getElementById('encOut');
-      const rot13 = (s) => s.replace(/[a-zA-Z]/g, (c) => { const b = c <= 'Z' ? 65 : 97; return String.fromCharCode((c.charCodeAt(0) - b + 13) % 26 + b); });
-      function enc() {
-        const v = encIn.value; let out = '';
-        try {
-          switch (encMode.value) {
-            case 'b64e': out = btoa(unescape(encodeURIComponent(v))); break;
-            case 'b64d': out = decodeURIComponent(escape(atob(v.trim()))); break;
-            case 'rot13': out = rot13(v); break;
-            case 'hexe': out = [...v].map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join(' '); break;
-            case 'hexd': out = v.trim().split(/\s+/).filter(Boolean).map(h => String.fromCharCode(parseInt(h, 16))).join(''); break;
-          }
-        } catch (e) { out = '⚠ invalid input'; }
-        encOut.textContent = out;
-      }
-      encIn.addEventListener('input', enc); encMode.addEventListener('change', enc);
-      document.getElementById('encCopy').addEventListener('click', () => { if (encOut.textContent && navigator.clipboard) navigator.clipboard.writeText(encOut.textContent).then(() => toast('📋 Copied')); });
-
-      const hashIn = document.getElementById('hashIn'), hashOut = document.getElementById('hashOut');
-      async function doHash() {
-        const v = hashIn.value; if (!v) { hashOut.textContent = ''; return; }
-        try { const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)); hashOut.textContent = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join(''); }
-        catch (e) { hashOut.textContent = 'SHA-256 unavailable in this context'; }
-      }
-      hashIn.addEventListener('input', doHash);
-
-      const pwIn = document.getElementById('pwIn'), pwBar = document.getElementById('pwBar'), pwLabel = document.getElementById('pwLabel');
-      pwIn.addEventListener('input', () => {
-        const v = pwIn.value; let s = 0;
-        if (v.length >= 8) s++; if (v.length >= 12) s++;
-        if (/[a-z]/.test(v) && /[A-Z]/.test(v)) s++; if (/\d/.test(v)) s++; if (/[^A-Za-z0-9]/.test(v)) s++;
-        const pct = [0, 20, 40, 60, 80, 100][s];
-        const map = [['—', 'var(--text-dim)'], ['Very weak', '#ff5470'], ['Weak', '#ff8c42'], ['Fair', '#ffbd2e'], ['Strong', '#27c93f'], ['Very strong', '#00e6a8']];
-        const idx = v ? Math.max(1, s) : 0;
-        pwBar.style.width = (v ? Math.max(10, pct) : 0) + '%'; pwBar.style.background = map[idx][1];
-        pwLabel.textContent = map[idx][0] + (v ? ` · ${v.length} chars` : '');
-      });
-    })();
-
-    /* ================= SKILL BARS ================= */
-    document.querySelectorAll('.skillbar').forEach((sb) => {
-      new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { sb.querySelector('.fill').style.width = (sb.dataset.lv || 50) + '%'; ob.disconnect(); } }), { threshold: 0.4 }).observe(sb);
-    });
-
-    /* ================= SOC DASHBOARD ================= */
-    (function soc() {
-      const socSec = document.getElementById('soc'); if (!socSec) return;
-      const log = document.getElementById('socLog'), blockedEl = document.getElementById('socBlocked');
-      let blocked = 0;
-      const RND = (a, b) => Math.floor(a + Math.random() * (b - a));
-      const ip = () => `${RND(10, 240)}.${RND(0, 255)}.${RND(0, 255)}.${RND(1, 254)}`;
-      const events = [
-        ['scan', 'port scan blocked from', true], ['auth', 'failed SSH login from', true],
-        ['ok', 'signature DB updated', false], ['ok', 'sensor heartbeat OK', false],
-        ['scan', 'SQLi attempt sanitized on /login', true], ['auth', 'brute-force throttled from', true],
-        ['ok', 'TLS handshake verified', false], ['scan', 'XSS payload blocked', true],
-      ];
-      function tick() {
-        const ev = events[RND(0, events.length)], t = new Date().toLocaleTimeString();
-        const line = document.createElement('div'); line.className = 'l';
-        const mark = ev[2] ? '<span class="b">⚠</span>' : '<span style="color:#27c93f">✓</span>';
-        line.innerHTML = `<span class="t">[${t}]</span> ${mark} ${ev[1]} ${ev[2] ? ip() : ''}`;
-        log.prepend(line);
-        while (log.children.length > 9) log.lastChild.remove();
-        if (ev[2]) { blocked++; blockedEl.textContent = blocked; }
-        setTimeout(tick, 1100 + Math.random() * 1500);
-      }
-      function startRadar() {
-        if (reduce) return;
-        const c = document.getElementById('radar'), x = c.getContext('2d');
-        const W = c.width, H = c.height, cx = W / 2, cy = H / 2, rad = W / 2 - 8;
-        const blips = Array.from({ length: 6 }, () => ({ a: Math.random() * 6.28, d: 20 + Math.random() * (rad - 20) }));
-        let ang = 0;
-        (function draw() {
-          const acc = getComputedStyle(root).getPropertyValue('--accent').trim() || '#00e6a8';
-          x.clearRect(0, 0, W, H);
-          x.strokeStyle = 'rgba(0,230,168,.22)'; x.lineWidth = 1;
-          for (let i = 1; i <= 3; i++) { x.beginPath(); x.arc(cx, cy, rad * i / 3, 0, 6.283); x.stroke(); }
-          x.beginPath(); x.moveTo(cx - rad, cy); x.lineTo(cx + rad, cy); x.moveTo(cx, cy - rad); x.lineTo(cx, cy + rad); x.stroke();
-          ang += 0.03;
-          x.save(); x.translate(cx, cy); x.rotate(ang);
-          x.beginPath(); x.moveTo(0, 0); x.arc(0, 0, rad, -0.45, 0); x.closePath(); x.fillStyle = 'rgba(0,230,168,.18)'; x.fill(); x.restore();
-          for (const b of blips) { const bx = cx + Math.cos(b.a) * b.d, by = cy + Math.sin(b.a) * b.d; x.beginPath(); x.arc(bx, by, 3, 0, 6.283); x.fillStyle = acc; x.fill(); }
-          requestAnimationFrame(draw);
-        })();
-      }
-      new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { tick(); startRadar(); ob.disconnect(); } }), { threshold: 0.2 }).observe(socSec);
-    })();
-
-    /* ================= SERVICE WORKER (offline / PWA) ================= */
-    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-      addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-    }
-
-    /* ================= TERMINAL: EXTRA COMMANDS ================= */
-    function runHack() {
-      achievement('Script Kiddie');
-      const steps = ['Scanning target …', 'Bypassing firewall …', 'Injecting payload …', 'Cracking credentials …', 'Escalating privileges …',
-        '<span class="ok">ACCESS GRANTED</span> <span class="dim">(just kidding 😄 — always hack ethically & with permission!)</span>'];
-      let i = 0; (function s() { if (i >= steps.length) return; print("<span class='dim'>[*]</span> " + steps[i++]); setTimeout(s, 380); })();
-    }
-    commands.crt = () => { crtToggle(); return "<span class='dim'>CRT mode toggled.</span>"; };
-    commands.sound = () => { toggleSound(); return "<span class='dim'>typing sound: " + (soundOn ? 'ON' : 'OFF') + "</span>"; };
-    commands.hack = () => { runHack(); return null; };
-    commands.sudo = (a) => {
-      if ((a[0] || '') === 'hire-victor') { confetti(); achievement('Recruiter Mode');
-        return "<span class='ok'>Excellent choice. 🎉</span>\nInitiating onboarding sequence…\n  email    <span class='ok'>your@email.com</span>\n  github   <span class='ok'>github.com/vicuvi1</span>\n<span class='dim'>let's build something secure together.</span>"; }
-      return "<span class='err'>[sudo]</span> nice try 😏 you don't have root here.\n<span class='dim'>hint: 'cat flag.txt' — or try 'sudo hire-victor' 😉</span>";
-    };
-    const _cat = commands.cat;
-    commands.cat = (a) => { if ((a[0] || '').toLowerCase() === 'flag.txt') achievement('Flag Hunter'); return _cat(a); };
-
-    /* ================= PALETTE: EXTRA ACTIONS ================= */
-    actions.push(
-      { label: 'Go to Security toolbox', hint: 'section', run: () => go('#toolbox') },
-      { label: 'Go to Security operations', hint: 'section', run: () => go('#soc') },
-      { label: 'Go to Blog / writeups', hint: 'section', run: () => go('#blog') },
-      { label: 'View résumé (inline)', hint: 'action', run: () => openResume() },
-      { label: 'Toggle CRT mode', hint: 'easter egg', run: () => crtToggle() },
-      { label: 'Toggle typing sound', hint: 'action', run: () => toggleSound() }
-    );
-
-    /* ================= WRITEUPS / BLOG LIBRARY ================= */
-    /* Add or edit entries here — project cards & blog cards both read from this. */
-    const library = {
-      'web-idor': {
-        title: 'Web Exploitation: IDOR → Account Takeover', date: 'Jul 2026',
-        excerpt: 'Chaining a simple access-control flaw into full account takeover.',
-        meta: '<span class="badge">CTF</span><span class="badge">Web</span>',
-        body: `<h4>Overview</h4><p>A walkthrough of finding and exploiting an Insecure Direct Object Reference (IDOR) that escalated into full account takeover on a deliberately vulnerable lab app.</p>
-          <h4>Recon</h4><p>Mapped the app and noticed profile data loading from <code>/api/user/{id}</code>. The id was sequential and the server never checked ownership.</p>
+    /* ---------- projects + writeups ---------- */
+    const projects = [
+      { id: 'web-idor', cat: 'offensive', title: 'Web Exploitation: IDOR → Account Takeover', tags: ['CTF', 'Web'],
+        desc: 'Chaining an access-control flaw into full account takeover.',
+        body: `<h4>Overview</h4><p>Finding and exploiting an Insecure Direct Object Reference (IDOR) that escalated into full account takeover on a deliberately vulnerable lab app.</p>
+          <h4>Recon</h4><p>Profile data loaded from <code>/api/user/{id}</code> — the id was sequential and the server never checked ownership.</p>
           <h4>Exploitation</h4><pre>GET /api/user/1002/profile HTTP/1.1
-Cookie: session=attacker_session</pre><p>Swapping the id returned other users' data — including a password-reset token, which let me take over any account.</p>
-          <h4>Impact</h4><p>Complete account takeover of any user by iterating IDs — a critical access-control flaw.</p>
-          <h4>Remediation</h4><ul><li>Enforce object-level authorization on every request.</li><li>Use unguessable identifiers (UUIDs) as defense in depth.</li><li>Add automated access-control tests.</li></ul>
-          <p style="opacity:.6">(Template writeup — replace with your real notes.)</p>`
-      },
-      'ad-path': {
-        title: 'Active Directory: Foothold → Domain Admin', date: 'Jul 2026',
-        excerpt: 'Walking a lab AD from a low-priv shell up to Domain Admin.',
-        meta: '<span class="badge">Active Directory</span><span class="badge">Lab</span>',
-        body: `<h4>Overview</h4><p>Simulating an internal breach: starting from a low-privileged foothold and working up to Domain Admin in a lab Active Directory.</p>
-          <h4>Recon</h4><p>Enumerated the domain with BloodHound to map trust relationships and find the shortest path to high-value groups.</p>
-          <h4>Attack path</h4><ul><li>Kerberoasted a service account and cracked its weak password offline.</li><li>Used the account's local admin rights for lateral movement.</li><li>Dumped credentials and reached Domain Admin.</li></ul>
-          <h4>Hardening</h4><ul><li>Strong, rotated service-account passwords (or gMSAs).</li><li>Tiered admin model &amp; LAPS for local admin passwords.</li><li>Monitor for Kerberoasting (event 4769 anomalies).</li></ul>
-          <p style="opacity:.6">(Template — swap in your real lab notes.)</p>`
-      },
-      'portscanner': {
-        title: 'Building a Port Scanner from Scratch', date: 'Jun 2026',
-        excerpt: 'Understanding recon by building the tool, not just running it.',
-        meta: '<span class="badge">Tool</span><span class="badge">Python</span>',
-        body: `<h4>What &amp; why</h4><p>I built a small multithreaded TCP port scanner in Python to really understand connect scans, timeouts, and concurrency.</p>
+Cookie: session=attacker_session</pre><p>Swapping the id returned other users' data — including a password-reset token, enabling takeover of any account.</p>
+          <h4>Remediation</h4><ul><li>Enforce object-level authorization on every request.</li><li>Use unguessable identifiers (UUIDs).</li><li>Add automated access-control tests.</li></ul>
+          <p style="opacity:.6">(Template — replace with your real notes.)</p>` },
+      { id: 'ad-path', cat: 'offensive', title: 'Active Directory: Foothold → Domain Admin', tags: ['Active Directory', 'Lab'],
+        desc: 'Walking a lab AD from a low-priv shell up to Domain Admin.',
+        body: `<h4>Overview</h4><p>Simulating an internal breach: from a low-privileged foothold up to Domain Admin in a lab AD.</p>
+          <h4>Attack path</h4><ul><li>Kerberoasted a service account and cracked its weak password offline.</li><li>Used local admin rights for lateral movement.</li><li>Dumped credentials and reached Domain Admin.</li></ul>
+          <h4>Hardening</h4><ul><li>Strong, rotated service-account passwords (or gMSAs).</li><li>Tiered admin model &amp; LAPS.</li><li>Monitor for Kerberoasting (event 4769).</li></ul>` },
+      { id: 'portscanner', cat: 'tools', title: 'Building a Port Scanner from Scratch', tags: ['Tool', 'Python'],
+        desc: 'Understanding recon by building the tool, not just running it.',
+        body: `<h4>What &amp; why</h4><p>A small multithreaded TCP port scanner in Python to really understand connect scans, timeouts, and concurrency.</p>
           <h4>Core idea</h4><pre>for port in range(1, 1025):
-    s = socket.socket()
-    s.settimeout(0.5)
+    s = socket.socket(); s.settimeout(0.5)
     if s.connect_ex((host, port)) == 0:
         print("[+] " + str(port) + " open")
     s.close()</pre>
-          <h4>Improvements</h4><ul><li>Thread pool for speed.</li><li>Banner grabbing on open ports.</li><li>JSON output for tooling.</li></ul>
-          <p>Building tools from scratch teaches far more than running someone else's.</p>`
-      },
-      'recon-script': {
-        title: 'One-Command Recon Automation', date: 'Jun 2026',
-        excerpt: 'Chaining recon steps into a single repeatable script.',
-        meta: '<span class="badge">Tool</span><span class="badge">Bash</span>',
-        body: `<h4>Overview</h4><p>A Bash wrapper that chains common recon steps into one command so I can start engagements faster.</p>
-          <h4>Pipeline</h4><ul><li>Subdomain enumeration</li><li>Live-host &amp; port discovery</li><li>Screenshotting web services</li><li>Tidy Markdown report</li></ul>
-          <h4>Lesson</h4><p>Automation isn't about skipping the fundamentals — it's about removing repetition so you can focus on the interesting findings.</p>`
-      },
-      'soc-lab': {
-        title: 'Home SOC Lab', date: 'May 2026',
-        excerpt: 'A detection lab to practice blue-team skills end to end.',
-        meta: '<span class="badge">Blue Team</span><span class="badge">SIEM</span>',
-        body: `<h4>Overview</h4><p>A home Security Operations Center lab to practice detection and response against real attack techniques.</p>
-          <h4>Stack</h4><ul><li>Log collection from endpoints &amp; network</li><li>A SIEM for search and alerting</li><li>An attacker VM to generate telemetry</li></ul>
-          <h4>What I practice</h4><ul><li>Writing detections for brute force, persistence, and lateral movement</li><li>Triaging alerts and cutting false positives</li></ul>
-          <p>Defending is a skill you build by attacking your own lab and watching what lights up.</p>`
-      },
-      'detection-rules': {
-        title: 'Detection Rules Pack (Sigma + ATT&CK)', date: 'May 2026',
-        excerpt: 'Portable detections mapped to MITRE ATT&CK.',
-        meta: '<span class="badge">Detection</span><span class="badge">Sigma</span>',
-        body: `<h4>Overview</h4><p>A growing pack of Sigma detection rules mapped to MITRE ATT&amp;CK, portable across SIEMs.</p>
-          <h4>Examples</h4><ul><li>Suspicious PowerShell (encoded commands)</li><li>Failed-then-success login bursts (brute force)</li><li>New service / run-key persistence</li></ul>
-          <h4>Why Sigma</h4><p>Write once, convert to many backends — detections shouldn't be locked to one vendor.</p>`
-      },
-      'blog-first-ctf': {
-        title: 'My First CTF: Lessons Learned', date: 'Jul 2026',
-        excerpt: 'What my first Capture The Flag taught me about persistence.',
-        meta: '<span class="badge">CTF</span><span class="badge">Beginner</span>',
-        body: `<h4>Jumping in</h4><p>My first CTF was equal parts exciting and humbling. I didn't solve much — but I learned how to <em>approach</em> problems.</p>
-          <h4>Takeaways</h4><ul><li>Enumerate thoroughly before trying exploits.</li><li>Read the error messages — they're hints.</li><li>Write notes as you go; future-you needs them.</li><li>Stuck ≠ failing. It's the job.</li></ul>
-          <p>Next goal: solve one box a week and publish the writeup.</p>`
-      },
-      'blog-linux-priv': {
-        title: 'A Gentle Intro to Linux Privilege Escalation', date: 'Jun 2026',
-        excerpt: 'Beginner-friendly tour of common Linux privesc paths.',
-        meta: '<span class="badge">Linux</span><span class="badge">Privesc</span>',
-        body: `<h4>The idea</h4><p>Privilege escalation is about turning limited access into full control. Here are the first things I check.</p>
-          <h4>Quick wins</h4><ul><li>SUID binaries: <code>find / -perm -4000 2&gt;/dev/null</code></li><li>Sudo rights: <code>sudo -l</code></li><li>Cron jobs &amp; writable scripts</li><li>Kernel version vs known exploits</li></ul>
-          <p>Always understand <em>why</em> a technique works before using it.</p>`
-      },
-      'blog-why-cyber': {
-        title: 'Why I Chose Cybersecurity', date: 'May 2026',
-        excerpt: "Why I chose this field — and how I'm building toward it.",
-        meta: '<span class="badge">Career</span>',
-        body: `<h4>Why security</h4><p>I like understanding how things really work, then figuring out how they break. Security rewards curiosity more than almost any field.</p>
-          <h4>My plan</h4><ul><li>Master the fundamentals: networking, Linux, scripting.</li><li>Practice relentlessly in labs and CTFs.</li><li>Publish what I learn.</li><li>Earn certifications to validate skills.</li></ul>
-          <p>I'm at the beginning — but I'm moving with intent.</p>`
-      },
-    };
+          <h4>Next</h4><ul><li>Thread pool for speed.</li><li>Banner grabbing.</li><li>JSON output.</li></ul>` },
+      { id: 'recon-script', cat: 'tools', title: 'One-Command Recon Automation', tags: ['Tool', 'Bash'],
+        desc: 'Chaining recon steps into a single repeatable script.',
+        body: `<h4>Overview</h4><p>A Bash wrapper that chains common recon steps into one command.</p>
+          <h4>Pipeline</h4><ul><li>Subdomain enumeration</li><li>Live-host &amp; port discovery</li><li>Web screenshots</li><li>Markdown report</li></ul>
+          <h4>Lesson</h4><p>Automation removes repetition so you can focus on interesting findings.</p>` },
+      { id: 'soc-lab', cat: 'blue', title: 'Home SOC Lab', tags: ['Blue Team', 'SIEM'],
+        desc: 'A detection lab to practice blue-team skills end to end.',
+        body: `<h4>Overview</h4><p>A home SOC lab to practice detection and response against real attack techniques.</p>
+          <h4>Stack</h4><ul><li>Endpoint &amp; network log collection</li><li>A SIEM for search and alerting</li><li>An attacker VM for telemetry</li></ul>
+          <h4>Practice</h4><ul><li>Detections for brute force, persistence, lateral movement</li><li>Triage &amp; false-positive reduction</li></ul>` },
+      { id: 'detection-rules', cat: 'blue', title: 'Detection Rules Pack (Sigma + ATT&CK)', tags: ['Detection', 'Sigma'],
+        desc: 'Portable detections mapped to MITRE ATT&CK.',
+        body: `<h4>Overview</h4><p>A growing pack of Sigma rules mapped to MITRE ATT&amp;CK, portable across SIEMs.</p>
+          <h4>Examples</h4><ul><li>Suspicious PowerShell (encoded commands)</li><li>Brute-force login bursts</li><li>Run-key persistence</li></ul>
+          <h4>Why Sigma</h4><p>Write once, convert to many backends.</p>` },
+    ];
+    const projGrid = document.getElementById('projGrid');
+    projGrid.innerHTML = projects.map(p =>
+      `<div class="card proj reveal" data-cat="${p.cat}" data-id="${p.id}">
+        <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <h3>${p.title}</h3><p>${p.desc}</p><div class="more">Read writeup →</div>
+      </div>`).join('');
+    document.querySelectorAll('#projGrid .proj').forEach(el => io.observe(el));
 
-    /* ---- detail modal ---- */
-    const detailModal = document.getElementById('detailModal');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailBody = document.getElementById('detailBody');
-    function openDetail(id) {
-      const p = library[id]; if (!p) return;
-      detailTitle.textContent = p.title;
-      detailBody.innerHTML = (p.meta ? `<div class="detail-meta">${p.meta}</div>` : '') + p.body;
-      detailBody.scrollTop = 0;
-      detailModal.classList.add('open');
+    /* filters */
+    document.getElementById('filters').addEventListener('click', e => {
+      const b = e.target.closest('.filter-btn'); if (!b) return;
+      document.querySelectorAll('#filters .filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      const f = b.dataset.filter;
+      document.querySelectorAll('#projGrid .proj').forEach(c => c.classList.toggle('hide', !(f === 'all' || c.dataset.cat === f)));
+    });
+
+    /* modal */
+    const modal = document.getElementById('modal'), modalTitle = document.getElementById('modalTitle'), modalBody = document.getElementById('modalBody');
+    let lastFocused = null;
+    function openModal(id) {
+      const p = projects.find(x => x.id === id); if (!p) return;
+      lastFocused = document.activeElement;
+      modalTitle.textContent = p.title;
+      modalBody.innerHTML = `<div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` + p.body;
+      modalBody.scrollTop = 0; modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+      setTimeout(() => document.getElementById('modalClose').focus(), 40);
     }
-    function closeDetail() { detailModal.classList.remove('open'); }
-    document.getElementById('detailClose').addEventListener('click', closeDetail);
-    detailModal.addEventListener('click', (e) => { if (e.target === detailModal) closeDetail(); });
-    addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetail(); });
-    document.addEventListener('click', (e) => { const el = e.target.closest('[data-open]'); if (el) { e.preventDefault(); openDetail(el.dataset.open); } });
-
-    /* ---- render blog cards ---- */
-    const blogList = ['blog-first-ctf', 'blog-linux-priv', 'blog-why-cyber'];
-    const blogGrid = document.getElementById('blogGrid');
-    if (blogGrid) {
-      blogGrid.innerHTML = blogList.map(id => {
-        const p = library[id];
-        return `<div class="card blog-card" data-open="${id}"><span class="spot"></span><div class="meta">${p.meta || ''}</div><div class="date">${p.date}</div><h3>${p.title}</h3><p>${p.excerpt || ''}</p><div class="links"><a href="#" data-open="${id}">Read →</a></div></div>`;
-      }).join('');
-    }
-
-    /* ---- particle network (optimized) ---- */
-    (function () {
-      const canvas = document.getElementById('net'), ctx = canvas.getContext('2d');
-      // perf: skip the network on reduced-motion, small screens, and low-power devices
-      if (reduce || innerWidth < 820 || (navigator.hardwareConcurrency || 4) < 4 || (navigator.deviceMemory || 4) < 4) { if (canvas) canvas.style.display = 'none'; return; }
-      let w, h, particles = [], dpr = 1;
-      const mouse = { x:-9999, y:-9999 };
-      let rgb = [0,230,168];
-      function readAccent() {
-        const hex = (getComputedStyle(root).getPropertyValue('--accent').trim() || '#00e6a8').replace('#','');
-        const s = hex.length===3 ? hex.split('').map(c=>c+c).join('') : hex, n = parseInt(s,16);
-        rgb = [(n>>16)&255,(n>>8)&255,n&255];
+    function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); if (lastFocused) lastFocused.focus(); }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('click', e => { const c = e.target.closest('.proj'); if (c) openModal(c.dataset.id); });
+    addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Tab' && modal.classList.contains('open')) {
+        const f = [...modal.querySelectorAll('button,a[href],input,textarea,[tabindex]:not([tabindex="-1"])')].filter(x => x.offsetParent);
+        if (!f.length) return; const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
-      function resize() {
-        w = canvas.width = innerWidth*dpr; h = canvas.height = innerHeight*dpr;
-        canvas.style.width = innerWidth+'px'; canvas.style.height = innerHeight+'px';
-        const count = Math.min(46, Math.floor(innerWidth*innerHeight/30000));
-        particles = Array.from({length:count}, () => ({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.35*dpr, vy:(Math.random()-.5)*.35*dpr, ix:0, iy:0 }));
-      }
-      addEventListener('resize', resize, { passive:true });
-      addEventListener('pointermove', e => { mouse.x = e.clientX*dpr; mouse.y = e.clientY*dpr; }, { passive:true });
-      addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
-      // click = shockwave through the network
-      addEventListener('pointerdown', e => {
-        const bx = e.clientX*dpr, by = e.clientY*dpr, R = 200*dpr;
-        for (const p of particles) {
-          const dx = p.x-bx, dy = p.y-by, d2 = dx*dx+dy*dy;
-          if (d2 < R*R) { const d = Math.sqrt(d2)||1, f = (1-d/R)*7; p.ix += dx/d*f; p.iy += dy/d*f; }
-        }
-      }, { passive:true });
-      readAccent(); resize();
-      new MutationObserver(readAccent).observe(root, { attributes:true, attributeFilter:['data-theme'] });
+    });
 
-      const MAX = 128*dpr, MAX2 = MAX*MAX, MMAX = 170*dpr, MMAX2 = MMAX*MMAX;
-      function draw() {
-        ctx.clearRect(0,0,w,h);
-        const [r,g,b] = rgb;
-        for (const p of particles) {
-          p.x += p.vx + p.ix; p.y += p.vy + p.iy;
-          p.ix *= 0.93; p.iy *= 0.93;               // impulse friction
-          if (p.x<0||p.x>w) p.vx*=-1; if (p.y<0||p.y>h) p.vy*=-1;
-          p.x = Math.max(0, Math.min(w, p.x)); p.y = Math.max(0, Math.min(h, p.y));
-          const dxm = mouse.x-p.x, dym = mouse.y-p.y, dm2 = dxm*dxm+dym*dym;
-          if (dm2 < MMAX2) { const dm = Math.sqrt(dm2)||1; p.x += dxm/dm*0.5; p.y += dym/dm*0.5; }
-          ctx.beginPath(); ctx.arc(p.x,p.y,1.5*dpr,0,6.283); ctx.fillStyle = `rgba(${r},${g},${b},0.75)`; ctx.fill();
-        }
-        for (let i=0;i<particles.length;i++){
-          const a = particles[i];
-          for (let j=i+1;j<particles.length;j++){
-            const c = particles[j], dx=a.x-c.x, dy=a.y-c.y, d2=dx*dx+dy*dy;
-            if (d2 < MAX2) { const al = 0.14*(1-d2/MAX2); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(c.x,c.y);
-              ctx.strokeStyle = `rgba(${r},${g},${b},${al})`; ctx.lineWidth = dpr; ctx.stroke(); }
-          }
-          const dmx=a.x-mouse.x, dmy=a.y-mouse.y, dd2=dmx*dmx+dmy*dmy;
-          if (dd2 < MMAX2) { const al = 0.22*(1-dd2/MMAX2); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(mouse.x,mouse.y);
-            ctx.strokeStyle = `rgba(${r},${g},${b},${al})`; ctx.lineWidth = dpr; ctx.stroke(); }
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
+    /* copy email */
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => a.addEventListener('click', e => {
+      const addr = a.getAttribute('href').replace('mailto:', '');
+      if (navigator.clipboard) { e.preventDefault(); navigator.clipboard.writeText(addr).then(() => toast('📋 Email copied: ' + addr)); }
+    }));
+
+    /* live github */
+    (function gh() {
+      const user = 'vicuvi1', list = document.getElementById('ghRepoList');
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      const lc = { JavaScript:'#f1e05a', TypeScript:'#3178c6', Python:'#3572A5', HTML:'#e34c26', CSS:'#563d7c', 'C++':'#f34b7d', C:'#666', Shell:'#89e051', Go:'#00ADD8', Java:'#b07219', PHP:'#4F5D95', Rust:'#dea584', PowerShell:'#012456' };
+      fetch(`https://api.github.com/users/${user}`).then(r => { if (!r.ok) throw 0; return r.json(); })
+        .then(u => { set('ghRepos', u.public_repos); set('ghFollowers', u.followers); set('ghFollowing', u.following); }).catch(() => {});
+      fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=100`).then(r => { if (!r.ok) throw 0; return r.json(); })
+        .then(repos => {
+          if (!Array.isArray(repos)) throw 0;
+          set('ghStars', repos.reduce((s, r) => s + r.stargazers_count, 0));
+          const top = repos.filter(r => !r.fork).sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at))).slice(0, 6);
+          list.innerHTML = top.length ? top.map(r =>
+            `<a class="card gh-repo" href="${r.html_url}" target="_blank" rel="noopener">
+              <div class="name">${r.name}</div>
+              <div class="desc">${r.description ? r.description.replace(/</g, '&lt;') : 'No description'}</div>
+              <div class="foot">${r.language ? `<span><span class="gh-dot" style="background:${lc[r.language] || '#9ca3b2'}"></span>${r.language}</span>` : ''}<span>★ ${r.stargazers_count}</span></div>
+            </a>`).join('') : "<div class='gh-msg'>No public repositories yet — new work is on the way.</div>";
+        }).catch(() => { list.innerHTML = `<div class='gh-msg'>Couldn't load repos right now. Visit <a href='https://github.com/${user}' target='_blank' style='color:var(--g2)'>github.com/${user}</a>.</div>`; });
     })();
+
+    /* contact form */
+    const cf = document.getElementById('contactForm');
+    cf.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (cf.action.includes('your-form-id')) { toast('⚙ Add your Formspree form ID first (see README)'); return; }
+      const btn = cf.querySelector('button'); const label = btn.textContent; btn.textContent = 'Sending…'; btn.disabled = true;
+      try {
+        const res = await fetch(cf.action, { method: 'POST', body: new FormData(cf), headers: { Accept: 'application/json' } });
+        if (res.ok) { cf.reset(); toast('✅ Message sent — thanks!'); } else toast('❌ Something went wrong — try email.');
+      } catch { toast('❌ Network error — try email.'); }
+      btn.textContent = label; btn.disabled = false;
+    });
   </script>
 </body>
 </html>
