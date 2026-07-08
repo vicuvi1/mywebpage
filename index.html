@@ -86,7 +86,8 @@
     .blob.b1 { width:320px; height:320px; background:var(--accent);  top:-70px; right:-50px; }
     .blob.b2 { width:280px; height:280px; background:var(--accent-2); bottom:8%; left:-70px; animation-delay:-7s; }
     .blob.b3 { width:240px; height:240px; background:var(--accent-3); top:42%; right:22%; animation-delay:-13s; }
-    @keyframes float { 0%,100%{ transform:translate3d(0,0,0) scale(1);} 33%{ transform:translate3d(26px,-34px,0) scale(1.08);} 66%{ transform:translate3d(-22px,22px,0) scale(.95);} }
+    /* translate-only (no scale) so the heavy blur isn't re-rasterized every frame → smooth */
+    @keyframes float { 0%,100%{ transform:translate3d(0,0,0);} 33%{ transform:translate3d(42px,-48px,0);} 66%{ transform:translate3d(-36px,30px,0);} }
 
     .wrap { max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
@@ -356,12 +357,12 @@
     /* drop the name glitch + third accent blob for a calmer, more professional look */
     .glitch::before, .glitch::after { display:none !important; }
     /* richer, flowing aurora background */
-    .blob { opacity:.32; filter:blur(90px); }
+    .blob { opacity:.32; filter:blur(78px); }
     .blob.b1 { width:46vw; height:46vw; top:-14vw; right:-8vw; }
     .blob.b2 { width:40vw; height:40vw; bottom:6%; left:-10vw; }
     .blob.b3 { display:block; width:36vw; height:36vw; top:38%; right:20%; opacity:.24; }
     /* subtle film grain for depth */
-    .grain { position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+    .grain { position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.04;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     /* clear keyboard focus rings (cursor is native again) */
     :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:5px; }
@@ -1655,7 +1656,7 @@ Cookie: session=attacker_session</pre><p>Swapping the id returned other users' d
       function resize() {
         w = canvas.width = innerWidth*dpr; h = canvas.height = innerHeight*dpr;
         canvas.style.width = innerWidth+'px'; canvas.style.height = innerHeight+'px';
-        const count = Math.min(80, Math.floor(innerWidth*innerHeight/18000));
+        const count = Math.min(62, Math.floor(innerWidth*innerHeight/22000));
         particles = Array.from({length:count}, () => ({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.35*dpr, vy:(Math.random()-.5)*.35*dpr, ix:0, iy:0 }));
       }
       addEventListener('resize', resize, { passive:true });
