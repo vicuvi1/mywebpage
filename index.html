@@ -51,11 +51,18 @@
     :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-    /* soft static backdrop — no busy animation */
-    .bg { position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:
-        radial-gradient(720px 480px at 78% -6%, color-mix(in srgb, var(--g1) 26%, transparent), transparent 60%),
-        radial-gradient(680px 520px at 8% 8%, color-mix(in srgb, var(--g2) 20%, transparent), transparent 58%); }
+    /* flowing aurora backdrop + film grain */
+    .bg { position:fixed; inset:0; z-index:-2; pointer-events:none; overflow:hidden; }
+    .bg .aurora { position:absolute; border-radius:50%; filter:blur(90px); opacity:.5; will-change:transform; }
+    .bg .a1 { width:54vw; height:54vw; background:var(--g1); top:-16vw; right:-8vw; animation:drift1 26s ease-in-out infinite; }
+    .bg .a2 { width:46vw; height:46vw; background:var(--g2); top:26vh; left:-12vw; animation:drift2 32s ease-in-out infinite; }
+    .bg .a3 { width:42vw; height:42vw; background:var(--g3); bottom:-14vw; left:36vw; opacity:.3; animation:drift3 38s ease-in-out infinite; }
+    :root[data-theme="light"] .bg .aurora { opacity:.34; }
+    @keyframes drift1 { 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(-6vw,6vh,0) scale(1.14);} }
+    @keyframes drift2 { 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(8vw,-5vh,0) scale(1.1);} }
+    @keyframes drift3 { 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(-5vw,-6vh,0) scale(1.16);} }
+    .grain { position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.045; mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
     .wrap { max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
@@ -212,8 +219,61 @@
     .to-top:hover { border-color:var(--border-2); }
 
     /* reveal */
-    .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
-    .reveal.in { opacity:1; transform:none; }
+    .reveal { opacity:0; transform:translateY(30px) scale(.985); filter:blur(6px); transition:opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease); }
+    .reveal.in { opacity:1; transform:none; filter:none; }
+
+    /* ---------- premium layer ---------- */
+    body { counter-reset:sec; }
+    .sec-head .kicker::before { counter-increment:sec; content:counter(sec, decimal-leading-zero) "  /  "; opacity:.55; }
+
+    /* card depth: gradient edge + cursor-follow glow */
+    .card { --mx:50%; --my:50%; }
+    .card > * { position:relative; z-index:2; }
+    .card::before { content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; opacity:0; transition:opacity .3s; pointer-events:none; z-index:1;
+      background:linear-gradient(130deg, var(--g1), var(--g2) 40%, transparent 70%);
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+    .card::after { content:""; position:absolute; inset:0; border-radius:inherit; opacity:0; transition:opacity .3s; pointer-events:none; z-index:0;
+      background:radial-gradient(260px circle at var(--mx) var(--my), color-mix(in srgb, var(--g2) 16%, transparent), transparent 62%); }
+    .card:hover::before { opacity:.95; }
+    .card:hover::after { opacity:1; }
+
+    /* primary button sheen */
+    .btn-primary { position:relative; overflow:hidden; }
+    .btn-primary::after { content:""; position:absolute; top:0; left:-130%; width:60%; height:100%; transform:skewX(-20deg);
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent); transition:left .6s var(--ease); }
+    .btn-primary:hover::after { left:140%; }
+
+    /* floating hero chips + portrait ring */
+    .float-chip { position:absolute; z-index:3; display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
+      padding:10px 15px; border-radius:13px; background:color-mix(in srgb, var(--bg-2) 82%, transparent); border:1px solid var(--border);
+      backdrop-filter:blur(10px); box-shadow:0 18px 40px -20px rgba(0,0,0,.65); }
+    .fc1 { top:6%; right:-5%; animation:bob 6s ease-in-out infinite; }
+    .fc2 { bottom:20%; left:-9%; animation:bob 7s ease-in-out infinite reverse; }
+    .fc3 { bottom:2%; right:8%; animation:bob 5.5s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-11px);} }
+    .portrait-ring { position:absolute; z-index:0; width:98%; aspect-ratio:1; border-radius:50%; filter:blur(5px); opacity:.55;
+      background:conic-gradient(from 0deg, var(--g1), var(--g2), var(--g3), var(--g1)); animation:spin 16s linear infinite; }
+    .portrait-ring::after { content:""; position:absolute; inset:12px; border-radius:50%; background:var(--bg); }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* marquee */
+    .marquee { border-block:1px solid var(--border); overflow:hidden; padding:24px 0; background:color-mix(in srgb, var(--bg-2) 55%, transparent); }
+    .marquee-track { display:flex; gap:52px; width:max-content; animation:scrollx 36s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state:paused; }
+    .marquee-track span { font-size:clamp(20px,3vw,34px); font-weight:800; letter-spacing:-.6px; color:var(--text-dim); display:flex; align-items:center; gap:52px; white-space:nowrap; }
+    .marquee-track span::after { content:"✦"; font-size:.5em; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    @keyframes scrollx { to { transform:translate3d(-50%,0,0); } }
+
+    /* impact band */
+    .impact { border-block:1px solid var(--border); background:color-mix(in srgb, var(--bg-2) 50%, transparent); }
+    .impact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:30px; padding:70px 0; text-align:center; }
+    .impact .n { font-size:clamp(40px,6vw,66px); font-weight:800; letter-spacing:-2px; line-height:1; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .impact .l { color:var(--text-dim); margin-top:12px; font-size:14px; }
+
+    /* pull quote */
+    .quote { padding:130px 0; text-align:center; }
+    .quote p { font-size:clamp(26px,4.6vw,52px); font-weight:800; letter-spacing:-1.6px; line-height:1.18; max-width:940px; margin:0 auto; }
+    .quote .hl { background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
     @media (prefers-reduced-motion: reduce) { *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
 
@@ -231,7 +291,8 @@
   </style>
 </head>
 <body>
-  <div class="bg"></div>
+  <div class="bg"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
+  <div class="grain"></div>
   <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
   <!-- writeup modal -->
@@ -282,12 +343,24 @@
         </div>
       </div>
       <div class="portrait-stage reveal">
+        <div class="portrait-ring"></div>
         <div class="portrait-glow"></div>
         <div class="portrait">
           <div class="portrait-ph" aria-hidden="true">VB</div>
           <img class="portrait-img" src="photo.jpg" alt="Victor Barbuta" onload="this.classList.add('loaded')" />
         </div>
+        <div class="float-chip fc1">🎯 Pen Testing</div>
+        <div class="float-chip fc2">🛡️ Blue Team</div>
+        <div class="float-chip fc3">🐧 Linux</div>
       </div>
+    </div>
+  </div>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Penetration Testing</span><span>Threat Hunting</span><span>Reverse Engineering</span><span>Incident Response</span><span>Red Team</span><span>Blue Team</span>
+      <span>Penetration Testing</span><span>Threat Hunting</span><span>Reverse Engineering</span><span>Incident Response</span><span>Red Team</span><span>Blue Team</span>
     </div>
   </div>
 
@@ -323,6 +396,18 @@
       <div class="card reveal"><div class="ico">🔎</div><h3>Vulnerability Research</h3><p>Reverse engineering, fuzzing, and responsible disclosure.</p></div>
     </div>
   </section>
+
+  <!-- ===================== IMPACT ===================== -->
+  <div class="impact">
+    <div class="wrap">
+      <div class="impact-grid">
+        <div class="reveal"><div class="n"><span class="count" data-to="6">0</span></div><div class="l">Projects shipped</div></div>
+        <div class="reveal"><div class="n"><span class="count" data-to="20">0</span>+</div><div class="l">CTF rooms &amp; labs</div></div>
+        <div class="reveal"><div class="n"><span class="count" data-to="4">0</span></div><div class="l">Certs on the roadmap</div></div>
+        <div class="reveal"><div class="n">∞</div><div class="l">Curiosity</div></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===================== SKILLS ===================== -->
   <section id="skills" class="wrap">
@@ -384,6 +469,11 @@
       <div class="card reveal"><div class="cert-top"><span class="cert-ico">⚔️</span><span class="cert-status progress">In Progress</span></div><h3>TryHackMe / HTB</h3><p>Working through offensive &amp; defensive learning paths and CTF rooms.</p></div>
       <div class="card reveal"><div class="cert-top"><span class="cert-ico">🌐</span><span class="cert-status progress">In Progress</span></div><h3>Networking Foundations</h3><p>TCP/IP, routing, and protocols — the groundwork every specialist needs.</p></div>
     </div>
+  </section>
+
+  <!-- ===================== QUOTE ===================== -->
+  <section class="quote wrap">
+    <p class="reveal">I don't just find vulnerabilities —<br><span class="hl">I make sure they never come back.</span></p>
   </section>
 
   <!-- ===================== CONTACT ===================== -->
@@ -451,12 +541,23 @@
     document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = Math.min(i % 6, 5) * 60 + 'ms'; io.observe(el); });
 
     /* counters */
-    new IntersectionObserver((es, ob) => es.forEach(e => {
+    const cObs = new IntersectionObserver((es, ob) => es.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target, to = +el.dataset.to; let s = null;
       const step = t => { if (!s) s = t; const p = Math.min((t - s) / 1200, 1); el.textContent = Math.floor(p * to); if (p < 1) requestAnimationFrame(step); else el.textContent = to; };
       requestAnimationFrame(step); ob.unobserve(el);
-    }), { threshold: .5 }).observe(document.querySelector('.count'));
+    }), { threshold: .5 });
+    document.querySelectorAll('.count').forEach(el => cObs.observe(el));
+
+    /* cursor-follow glow on cards */
+    if (!reduce && matchMedia('(hover: hover)').matches) {
+      document.addEventListener('pointermove', e => {
+        const card = e.target.closest('.card'); if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
 
     /* scroll-spy */
     const navA = [...document.querySelectorAll('.nav-links a')];
